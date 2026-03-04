@@ -25,21 +25,22 @@ const Skills = () => {
     >
       <div className="mx-auto max-w-5xl">
         <div className="flex flex-col items-center text-center">
-          <h2 className="text-2xl font-semibold text-white md:text-3xl">我的技能</h2>
-          <p className="mt-3 max-w-2xl text-sm text-gray-300 md:text-base">
-            覆盖前端、后端与工程工具，搭建完整的 Web
-            开发流程。所有技能以卡片形式展示，便于快速浏览。
-          </p>
-          <div className="mt-5 inline-flex flex-wrap justify-center gap-2 rounded-full bg-white/5 p-1">
+          <h2 className="text-2xl font-semibold md:text-3xl">
+            <span className="bg-gradient-to-r from-red-500 to-red-500 bg-clip-text text-transparent">
+              技
+            </span>
+            <span className="text-white">能</span>
+          </h2>
+          <div className="mt-5 inline-flex flex-wrap justify-center gap-2 rounded-full bg-background p-1">
             {categories.map((category) => (
               <button
                 key={category.id}
                 type="button"
                 onClick={() => setActiveCategory(category.id)}
-                className={`rounded-full px-3 py-1 text-xs font-medium transition ${
+                className={`rounded-full px-4 py-1.5 text-sm font-medium transition-all duration-300 active:scale-95 ${
                   activeCategory === category.id
-                    ? 'bg-gradient-to-r from-sky-500 to-purple-500 text-white'
-                    : 'text-gray-300 hover:bg-white/10'
+                    ? 'bg-gradient-to-r from-blue-500 to-blue-500 text-white shadow-lg shadow-blue-500/30'
+                    : 'text-gray-300 hover:bg-white/5 hover:text-white'
                 }`}
               >
                 {category.label}

@@ -17,7 +17,7 @@ const Contact = () => {
         <div className="mt-8 grid gap-6 md:grid-cols-3">
           <a
             href="mailto:your@email"
-            className="group flex items-center justify-between gap-4 rounded-2xl border border-gray-200 bg-white p-4 text-sm text-gray-700 transition hover:border-sky-400 hover:bg-gray-50"
+            className="group relative flex items-center justify-between gap-4 rounded-2xl border border-gray-200 bg-white p-4 text-sm text-gray-700 shadow-md shadow-black/10 transition-all duration-300 hover:scale-[1.02] hover:border-sky-400 hover:bg-gray-50 hover:shadow-xl hover:shadow-black/20"
           >
             <div>
               <p className="font-medium text-gray-900">Gmail</p>
@@ -29,14 +29,14 @@ const Contact = () => {
             <img
               src={gmailIcon}
               alt="Gmail"
-              className="h-8 w-8 flex-shrink-0"
+              className="h-8 w-8 flex-shrink-0 transition-transform duration-300 group-hover:scale-110"
             />
           </a>
           <a
             href="https://github.com/your-github"
             target="_blank"
             rel="noreferrer"
-            className="group flex items-center justify-between gap-4 rounded-2xl border border-gray-200 bg-white p-4 text-sm text-gray-700 transition hover:border-sky-400 hover:bg-gray-50"
+            className="group relative flex items-center justify-between gap-4 rounded-2xl border border-gray-200 bg-white p-4 text-sm text-gray-700 shadow-md shadow-black/10 transition-all duration-300 hover:scale-[1.02] hover:border-sky-400 hover:bg-gray-50 hover:shadow-xl hover:shadow-black/20"
           >
             <div>
               <p className="font-medium text-gray-900">GitHub</p>
@@ -45,14 +45,14 @@ const Contact = () => {
             <img
               src={githubIcon}
               alt="GitHub"
-              className="h-8 w-8 flex-shrink-0"
+              className="h-8 w-8 flex-shrink-0 transition-transform duration-300 group-hover:scale-110"
             />
           </a>
           <a
             href="https://space.bilibili.com/your-id"
             target="_blank"
             rel="noreferrer"
-            className="group flex items-center justify-between gap-4 rounded-2xl border border-gray-200 bg-white p-4 text-sm text-gray-700 transition hover:border-sky-400 hover:bg-gray-50"
+            className="group relative flex items-center justify-between gap-4 rounded-2xl border border-gray-200 bg-white p-4 text-sm text-gray-700 shadow-md shadow-black/10 transition-all duration-300 hover:scale-[1.02] hover:border-sky-400 hover:bg-gray-50 hover:shadow-xl hover:shadow-black/20"
           >
             <div>
               <p className="font-medium text-gray-900">Bilibili</p>
@@ -64,7 +64,7 @@ const Contact = () => {
             <img
               src={bilibiliIcon}
               alt="Bilibili"
-              className="h-8 w-8 flex-shrink-0"
+              className="h-8 w-8 flex-shrink-0 transition-transform duration-300 group-hover:scale-110"
             />
           </a>
         </div>
