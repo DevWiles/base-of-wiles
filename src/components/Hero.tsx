@@ -6,14 +6,16 @@ const Hero = () => {
     >
       <div className="mx-auto max-w-3xl text-center">
         <p className="text-sm uppercase tracking-[0.3em] text-sky-400/80">
-          Frontend Developer
+          Full Stack Developer
         </p>
-        <h1 className="mt-4 bg-gradient-to-r from-sky-400 via-purple-400 to-pink-500 bg-clip-text text-4xl font-bold text-transparent sm:text-5xl md:text-6xl">
-          打造有质感的 Web 体验
+        <h1 className="mt-4 text-4xl font-bold sm:text-5xl md:text-6xl">
+          <span className="bg-gradient-to-r from-sky-400 via-purple-400 to-pink-500 bg-clip-text text-transparent">
+            你好，我是
+          </span>
+          <span className="text-white"> Wiles</span>
         </h1>
         <p className="mt-6 text-base text-gray-300 sm:text-lg">
-          使用 React、TypeScript 与 Tailwind CSS
-          构建现代、性能优先的个人作品与产品界面。
+          我的主业是 JAVA 后端开发者，随着AI技术的发展，我得以开发不同语言、技术栈和需求的项目。我想通过博客把我的技能和经验分享给别人。
         </p>
         <div className="mt-8 flex flex-wrap justify-center gap-4">
           <a

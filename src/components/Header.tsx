@@ -15,7 +15,7 @@ const Header = ({ onNavClick }: HeaderProps) => {
     <header className="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-black/60 backdrop-blur">
       <div className="mx-auto flex max-w-5xl items-center justify-between px-4 py-3">
         <span className="bg-gradient-to-r from-sky-400 to-purple-500 bg-clip-text text-lg font-semibold text-transparent">
-          My Portfolio
+          Wiles Portfolio
         </span>
         <nav className="hidden gap-6 text-sm text-gray-300 md:flex">
           {navItems.map((item) => (
