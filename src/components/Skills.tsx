@@ -57,7 +57,7 @@ const Skills = () => {
           {filtered.map((skill) => (
             <div
               key={skill.id}
-              className="rounded-2xl border border-white/5 bg-white/5 p-4 shadow-sm shadow-black/40"
+              className="group relative rounded-2xl border border-white/5 bg-white/5 p-4 shadow-sm shadow-black/40 transition-transform duration-300 hover:scale-[1.02] hover:shadow-2xl hover:shadow-black/70"
             >
               <p className="text-sm font-medium text-white">{skill.name}</p>
               <p className="mt-1 text-xs text-gray-400">
