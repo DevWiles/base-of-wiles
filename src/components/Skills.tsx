@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import type { Skill, SkillCategory } from '../data/skills'
 import { skills } from '../data/skills'
 
@@ -8,16 +9,13 @@ const categories: { id: SkillCategory | 'all'; label: string }[] = [
   { id: 'tools', label: '工具' },
 ]
 
-type SkillsProps = {
-  activeCategory?: SkillCategory | 'all'
-}
-
 const filterSkills = (category: SkillCategory | 'all'): Skill[] => {
   if (category === 'all') return skills
   return skills.filter((skill) => skill.category === category)
 }
 
-const Skills = ({ activeCategory = 'all' }: SkillsProps) => {
+const Skills = () => {
+  const [activeCategory, setActiveCategory] = useState<SkillCategory | 'all'>('all')
   const filtered = filterSkills(activeCategory)
 
   return (
@@ -26,19 +24,18 @@ const Skills = ({ activeCategory = 'all' }: SkillsProps) => {
       className="bg-background px-4 py-20"
     >
       <div className="mx-auto max-w-5xl">
-        <div className="flex flex-col items-start justify-between gap-6 md:flex-row md:items-center">
-          <div>
-            <h2 className="text-2xl font-semibold text-white md:text-3xl">我的技能</h2>
-            <p className="mt-3 text-sm text-gray-300 md:text-base">
-              覆盖前端、后端与工程工具，搭建完整的 Web
-              开发流程。所有技能以卡片形式展示，便于快速浏览。
-            </p>
-          </div>
-          <div className="inline-flex flex-wrap gap-2 rounded-full bg-white/5 p-1">
+        <div className="flex flex-col items-center text-center">
+          <h2 className="text-2xl font-semibold text-white md:text-3xl">我的技能</h2>
+          <p className="mt-3 max-w-2xl text-sm text-gray-300 md:text-base">
+            覆盖前端、后端与工程工具，搭建完整的 Web
+            开发流程。所有技能以卡片形式展示，便于快速浏览。
+          </p>
+          <div className="mt-5 inline-flex flex-wrap justify-center gap-2 rounded-full bg-white/5 p-1">
             {categories.map((category) => (
               <button
                 key={category.id}
                 type="button"
+                onClick={() => setActiveCategory(category.id)}
                 className={`rounded-full px-3 py-1 text-xs font-medium transition ${
                   activeCategory === category.id
                     ? 'bg-gradient-to-r from-sky-500 to-purple-500 text-white'
