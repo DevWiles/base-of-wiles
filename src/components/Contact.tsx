@@ -1,12 +1,26 @@
 import gmailIcon from '../assets/gmail.svg'
 import githubIcon from '../assets/github.svg'
 import bilibiliIcon from '../assets/bilibili.svg'
+import { useState } from 'react'
 
 const Contact = () => {
+  const [showToast, setShowToast] = useState(false)
+
+  const handleEmailClick = async () => {
+    const email = 'nathan.demon66@gmail.com'
+    try {
+      await navigator.clipboard.writeText(email)
+      setShowToast(true)
+      setTimeout(() => setShowToast(false), 2000)
+    } catch (err) {
+      console.error('复制失败:', err)
+    }
+  }
+
   return (
     <section
       id="contact"
-      className="bg-background px-4 py-20"
+      className="bg-background px-4 py-20 relative"
     >
       <div className="mx-auto max-w-5xl">
         <h2 className="text-2xl font-semibold text-white md:text-3xl">联系方式</h2>
@@ -16,13 +30,12 @@ const Contact = () => {
 
         <div className="mt-8 grid gap-6 md:grid-cols-3">
           <a
-            href="mailto:your@email"
-            className="group relative flex items-center justify-between gap-4 rounded-2xl border border-gray-200 bg-white p-4 text-sm text-gray-700 shadow-md shadow-black/10 transition-all duration-300 hover:scale-[1.02] hover:border-sky-400 hover:bg-gray-50 hover:shadow-xl hover:shadow-black/20"
+            onClick={handleEmailClick}
+            className="group relative flex items-center justify-between gap-4 rounded-2xl border border-gray-200 bg-white p-4 text-sm text-gray-700 shadow-md shadow-black/10 transition-all duration-300 hover:scale-[1.02] hover:border-sky-400 hover:bg-gray-50 hover:shadow-xl hover:shadow-black/20 cursor-pointer"
           >
             <div>
               <p className="font-medium text-gray-900">Gmail</p>
               <p className="mt-2 break-all text-xs text-gray-600">
-                {/* TODO: 替换成你的真实邮箱 */}
                 nathan.demon66@gmail.com
               </p>
             </div>
@@ -33,14 +46,14 @@ const Contact = () => {
             />
           </a>
           <a
-            href="https://github.com/your-github"
+            href="https://github.com/DevWiles"
             target="_blank"
             rel="noreferrer"
             className="group relative flex items-center justify-between gap-4 rounded-2xl border border-gray-200 bg-white p-4 text-sm text-gray-700 shadow-md shadow-black/10 transition-all duration-300 hover:scale-[1.02] hover:border-sky-400 hover:bg-gray-50 hover:shadow-xl hover:shadow-black/20"
           >
             <div>
               <p className="font-medium text-gray-900">GitHub</p>
-              <p className="mt-2 text-xs text-gray-600">github.com/DevWiles</p>
+              <p className="mt-2 text-xs text-gray-600">@DevWiles</p>
             </div>
             <img
               src={githubIcon}
@@ -57,7 +70,7 @@ const Contact = () => {
             <div>
               <p className="font-medium text-gray-900">Bilibili</p>
               <p className="mt-2 text-xs text-gray-600">
-                b23.tv/bi25Af4
+                @Air_Chairman
               </p>
             </div>
             <img
@@ -68,6 +81,18 @@ const Contact = () => {
           </a>
         </div>
       </div>
+
+      {/* Toast 提示 */}
+      {showToast && (
+        <div className="fixed bottom-8 left-1/2 transform -translate-x-1/2 z-50 animate-fade-in">
+          <div className="bg-gray-900 text-white px-6 py-3 rounded-lg shadow-lg flex items-center gap-2">
+            <svg className="w-5 h-5 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+            </svg>
+            <span>邮箱地址已复制</span>
+          </div>
+        </div>
+      )}
     </section>
   )
 }
