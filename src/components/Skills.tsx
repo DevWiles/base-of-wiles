@@ -17,6 +17,10 @@ const filterSkills = (category: SkillCategory | 'all'): Skill[] => {
 const Skills = () => {
   const [activeCategory, setActiveCategory] = useState<SkillCategory | 'all'>('all')
   const filtered = filterSkills(activeCategory)
+  
+  // 计算需要多少个占位卡片来保持高度一致（基于 3 列 × 6 行 = 18 个位置）
+  const maxCards = 18
+  const placeholderCount = maxCards - filtered.length
 
   return (
     <section
@@ -65,6 +69,20 @@ const Skills = () => {
                 {skill.level === 'advanced' && '熟练使用'}
                 {skill.level === 'intermediate' && '日常开发'}
                 {skill.level === 'beginner' && '正在学习'}
+              </p>
+            </div>
+          ))}
+          {/* 占位卡片，保持高度一致 */}
+          {Array.from({ length: placeholderCount }).map((_, index) => (
+            <div
+              key={`placeholder-${index}`}
+              className="invisible rounded-2xl border border-white/5 bg-white/5 p-4 shadow-sm shadow-black/40"
+              aria-hidden="true"
+            >
+              <p className="text-sm font-medium text-white">&nbsp;</p>
+              <p className="mt-1 text-xs text-gray-400">&nbsp;</p>
+              <p className="mt-2 inline-flex rounded-full bg-white/10 px-2 py-0.5 text-xs text-gray-200">
+                &nbsp;
               </p>
             </div>
           ))}
