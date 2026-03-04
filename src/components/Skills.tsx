@@ -23,7 +23,7 @@ const Skills = ({ activeCategory = 'all' }: SkillsProps) => {
   return (
     <section
       id="skills"
-      className="bg-black px-4 py-20"
+      className="bg-background px-4 py-20"
     >
       <div className="mx-auto max-w-5xl">
         <div className="flex flex-col items-start justify-between gap-6 md:flex-row md:items-center">

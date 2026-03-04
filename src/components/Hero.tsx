@@ -2,7 +2,7 @@ const Hero = () => {
   return (
     <section
       id="hero"
-      className="flex min-h-screen items-center justify-center bg-gradient-to-b from-black via-background to-black px-4 pt-24"
+      className="flex min-h-screen items-center justify-center bg-background px-4 pt-24"
     >
       <div className="mx-auto max-w-3xl text-center">
         <p className="text-sm uppercase tracking-[0.3em] text-sky-400/80">
