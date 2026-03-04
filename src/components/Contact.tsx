@@ -5,13 +5,20 @@ import { useState } from 'react'
 
 const Contact = () => {
   const [showToast, setShowToast] = useState(false)
+  const [isFadingOut, setIsFadingOut] = useState(false)
 
   const handleEmailClick = async () => {
     const email = 'nathan.demon66@gmail.com'
     try {
       await navigator.clipboard.writeText(email)
       setShowToast(true)
-      setTimeout(() => setShowToast(false), 2000)
+      setIsFadingOut(false)
+      // 1.8 秒后开始淡出动画
+      setTimeout(() => {
+        setIsFadingOut(true)
+        // 等待淡出动画完成后隐藏
+        setTimeout(() => setShowToast(false), 300)
+      }, 1200)
     } catch (err) {
       console.error('复制失败:', err)
     }
@@ -84,7 +91,7 @@ const Contact = () => {
 
       {/* Toast 提示 */}
       {showToast && (
-        <div className="fixed bottom-8 left-1/2 transform -translate-x-1/2 z-50 animate-fade-in">
+        <div className={`fixed bottom-8 left-1/2 transform -translate-x-1/2 z-50 transition-opacity duration-300 ${isFadingOut ? 'opacity-0' : 'opacity-100'}`}>
           <div className="bg-gray-900 text-white px-6 py-3 rounded-lg shadow-lg flex items-center gap-2">
             <svg className="w-5 h-5 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
