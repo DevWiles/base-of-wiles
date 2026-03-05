@@ -2,8 +2,10 @@ import gmailIcon from '../assets/gmail.svg'
 import githubIcon from '../assets/github.svg'
 import bilibiliIcon from '../assets/bilibili.svg'
 import { useState } from 'react'
+import { useIntersectionObserver } from '../hooks/useIntersectionObserver'
 
 const Contact = () => {
+  const { ref, isIntersecting } = useIntersectionObserver<HTMLElement>({ threshold: 0.1 })
   const [showToast, setShowToast] = useState(false)
   const [isFadingOut, setIsFadingOut] = useState(false)
 
@@ -27,7 +29,10 @@ const Contact = () => {
   return (
     <section
       id="contact"
-      className="bg-background px-4 py-20 relative"
+      ref={ref}
+      className={`bg-background px-4 py-20 relative transition-all duration-700 ease-out ${
+        isIntersecting ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+      }`}
     >
       <div className="mx-auto max-w-5xl">
         <h2 className="text-2xl font-semibold text-white md:text-3xl">联系方式</h2>
