@@ -2,13 +2,17 @@ import { projects } from '../data/projects'
 import { useIntersectionObserver } from '../hooks/useIntersectionObserver'
 
 const Projects = () => {
-  const { ref, isIntersecting } = useIntersectionObserver<HTMLElement>({ threshold: 0.1 })
+  const { ref, isIntersecting, isExiting } = useIntersectionObserver<HTMLElement>({ threshold: 0.1, downwardOnly: true })
   return (
     <section
       id="projects"
       ref={ref}
       className={`bg-background px-4 py-20 transition-all duration-700 ease-out ${
-        isIntersecting ? 'animate-slide-fade-in opacity-100 translate-y-0' : 'slide-fade-reset'
+        isExiting 
+          ? 'animate-slide-fade-out' 
+          : isIntersecting 
+            ? 'animate-slide-fade-in opacity-100 translate-y-0' 
+            : 'slide-fade-reset'
       }`}
     >
       <div className="mx-auto max-w-4xl">

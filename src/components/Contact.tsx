@@ -5,7 +5,7 @@ import { useState } from 'react'
 import { useIntersectionObserver } from '../hooks/useIntersectionObserver'
 
 const Contact = () => {
-  const { ref, isIntersecting } = useIntersectionObserver<HTMLElement>({ threshold: 0.1 })
+  const { ref, isIntersecting, isExiting } = useIntersectionObserver<HTMLElement>({ threshold: 0.1, downwardOnly: true })
   const [showToast, setShowToast] = useState(false)
   const [isFadingOut, setIsFadingOut] = useState(false)
 
@@ -15,7 +15,7 @@ const Contact = () => {
       await navigator.clipboard.writeText(email)
       setShowToast(true)
       setIsFadingOut(false)
-      // 1.8 秒后开始淡出动画
+      // 1.2 秒后开始淡出动画
       setTimeout(() => {
         setIsFadingOut(true)
         // 等待淡出动画完成后隐藏
@@ -31,7 +31,11 @@ const Contact = () => {
       id="contact"
       ref={ref}
       className={`bg-background px-4 py-20 relative transition-all duration-700 ease-out ${
-        isIntersecting ? 'animate-slide-fade-in opacity-100 translate-y-0' : 'slide-fade-reset'
+        isExiting 
+          ? 'animate-slide-fade-out' 
+          : isIntersecting 
+            ? 'animate-slide-fade-in opacity-100 translate-y-0' 
+            : 'slide-fade-reset'
       }`}
     >
       <div className="mx-auto max-w-5xl">

@@ -36,6 +36,18 @@
   }
 }
 
+/* 平滑平移淡出动画 - 用于向上滚动时的下沉消失 */
+@keyframes slide-fade-out {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+}
+
 /* 快速淡出动画 */
 @keyframes quick-fade-out {
   0% {
@@ -61,6 +73,11 @@
   animation: slide-fade-in 1.2s cubic-bezier(0.4, 0, 0.2, 1) both;
 }
 
+/* 平滑淡出 class - 用于向上滚动时的下沉消失 */
+.animate-slide-fade-out {
+  animation: slide-fade-out 0.8s ease-in forwards;
+}
+
 /* 快速淡出 class */
 .animate-quick-fade-out {
   animation: quick-fade-out 0.4s ease-in forwards;
@@ -70,4 +87,16 @@
 .slide-fade-reset {
   opacity: 0;
   transform: translateY(50px);
+}
+
+/* 向下滚动进入时的样式 */
+.slide-fade-enter {
+  opacity: 0;
+  transform: translateY(50px);
+}
+
+/* 向上滚动离开时的样式 */
+.slide-fade-exit {
+  opacity: 0;
+  transform: translateY(20px);
 }
