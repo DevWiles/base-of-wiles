@@ -2,11 +2,11 @@ import profileImage from '../assets/profile.jpg'
 import { useIntersectionObserver } from '../hooks/useIntersectionObserver'
 
 const About = () => {
-  const { ref, isIntersecting } = useIntersectionObserver({ threshold: 0.1 })
+  const { ref, isIntersecting } = useIntersectionObserver<HTMLElement>({ threshold: 0.1 })
   return (
     <section
       id="about"
-      ref={ref as unknown as React.RefObject<HTMLElement>}
+      ref={ref}
       className={`bg-background px-4 py-20 transition-all duration-700 ease-out ${
         isIntersecting ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
       }`}
