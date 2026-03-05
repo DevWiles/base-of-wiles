@@ -50,19 +50,34 @@ const filterSkills = (category: SkillCategory | 'all'): Skill[] => {
   return skills.filter((skill) => skill.category === category)
 }
 
-// 熟练度排序规则：advanced > intermediate > beginner
-const levelOrder: Record<Skill['level'], number> = {
-  'advanced': 3,
-  'intermediate': 2,
-  'beginner': 1,
-}
+// 技能排序列表：按照 ID 顺序排列，排在前面的优先显示
+// 你可以在这里调整技能的显示顺序
+const skillOrder: string[] = [
+  // 熟练度最高的技能排在前面
+  'java', 'spring', 'mysql',
+  'node', 'python', 'react',
+  'vite', 'ts', 'tailwind',
+  'html', 'git', 'idea',
+  'pycharm', 'vscode', 'docker',
+
+]
 
 const sortSkillsByLevel = (skillsToSort: Skill[]): Skill[] => {
   return [...skillsToSort].sort((a, b) => {
-    // 首先按熟练度排序
-    const levelDiff = levelOrder[b.level] - levelOrder[a.level]
-    if (levelDiff !== 0) return levelDiff
-    // 熟练度相同时按名称字母顺序排序
+    // 根据 skillOrder 中的索引排序，索引小的排在前面
+    const aIndex = skillOrder.indexOf(a.id)
+    const bIndex = skillOrder.indexOf(b.id)
+    
+    // 如果在 skillOrder 中找到了，按索引排序
+    if (aIndex !== -1 && bIndex !== -1) {
+      return aIndex - bIndex
+    }
+    
+    // 如果只有一个在 skillOrder 中，找到的排在前面
+    if (aIndex !== -1) return -1
+    if (bIndex !== -1) return 1
+    
+    // 如果都不在 skillOrder 中，按名称字母顺序排序
     return a.name.localeCompare(b.name)
   })
 }
