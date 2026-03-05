@@ -24,37 +24,27 @@
   }
 }
 
-/* 弹性拉拽淡入动画 - 更有活力 */
-@keyframes bounce-fade-in {
+/* 平滑平移淡入动画 - 更柔和 */
+@keyframes slide-fade-in {
   0% {
     opacity: 0;
-    transform: translateY(60px) scale(0.95);
-  }
-  40% {
-    opacity: 1;
-    transform: translateY(-10px) scale(1.02);
-  }
-  70% {
-    transform: translateY(5px) scale(0.98);
+    transform: translateY(50px);
   }
   100% {
-    transform: translateY(0) scale(1);
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
-/* 快速拉拽淡出动画 */
+/* 快速淡出动画 */
 @keyframes quick-fade-out {
   0% {
     opacity: 1;
-    transform: translateY(0) scale(1);
-  }
-  30% {
-    opacity: 0.8;
-    transform: translateY(-15px) scale(0.98);
+    transform: translateY(0);
   }
   100% {
     opacity: 0;
-    transform: translateY(-40px) scale(0.95);
+    transform: translateY(-20px);
   }
 }
 
@@ -66,9 +56,9 @@
   animation: fade-out 0.3s ease-out forwards;
 }
 
-/* 弹性淡入 class - 用于 section */
-.animate-bounce-fade-in {
-  animation: bounce-fade-in 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+/* 平滑淡入 class - 用于 section */
+.animate-slide-fade-in {
+  animation: slide-fade-in 1.2s cubic-bezier(0.4, 0, 0.2, 1) both;
 }
 
 /* 快速淡出 class */
@@ -77,7 +67,7 @@
 }
 
 /* 反复触发时的淡出状态 - 用于重置动画 */
-.bounce-fade-reset {
+.slide-fade-reset {
   opacity: 0;
-  transform: translateY(60px) scale(0.95);
+  transform: translateY(50px);
 }

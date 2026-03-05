@@ -29,7 +29,7 @@ const Skills = () => {
       id="skills"
       ref={ref}
       className={`bg-background px-4 py-20 transition-all duration-700 ease-out ${
-        isIntersecting ? 'animate-bounce-fade-in opacity-100 translate-y-0' : 'bounce-fade-reset'
+        isIntersecting ? 'animate-slide-fade-in opacity-100 translate-y-0' : 'slide-fade-reset'
       }`}
     >
       <div className="mx-auto max-w-5xl">
