@@ -28,7 +28,7 @@
 @keyframes slide-fade-in {
   0% {
     opacity: 0;
-    transform: translateY(50px);
+    transform: translateY(30px);
   }
   100% {
     opacity: 1;
@@ -86,13 +86,13 @@
 /* 反复触发时的淡出状态 - 用于重置动画 */
 .slide-fade-reset {
   opacity: 0;
-  transform: translateY(50px);
+  transform: translateY(30px);
 }
 
 /* 向下滚动进入时的样式 */
 .slide-fade-enter {
   opacity: 0;
-  transform: translateY(50px);
+  transform: translateY(30px);
 }
 
 /* 向上滚动离开时的样式 */

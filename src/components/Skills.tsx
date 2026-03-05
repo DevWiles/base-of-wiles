@@ -16,7 +16,7 @@ const filterSkills = (category: SkillCategory | 'all'): Skill[] => {
 }
 
 const Skills = () => {
-  const { ref, isIntersecting, isExiting } = useIntersectionObserver<HTMLElement>({ threshold: 0.2, downwardOnly: true })
+  const { ref, isIntersecting, isExiting } = useIntersectionObserver<HTMLElement>({ threshold: 0.25, downwardOnly: true })
   const [activeCategory, setActiveCategory] = useState<SkillCategory | 'all'>('all')
   const filtered = filterSkills(activeCategory)
   

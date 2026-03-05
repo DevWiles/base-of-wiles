@@ -2,7 +2,7 @@ import { projects } from '../data/projects'
 import { useIntersectionObserver } from '../hooks/useIntersectionObserver'
 
 const Projects = () => {
-  const { ref, isIntersecting, isExiting } = useIntersectionObserver<HTMLElement>({ threshold: 0.2, downwardOnly: true })
+  const { ref, isIntersecting, isExiting } = useIntersectionObserver<HTMLElement>({ threshold: 0.18, downwardOnly: true })
   return (
     <section
       id="projects"
