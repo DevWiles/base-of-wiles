@@ -75,7 +75,7 @@
 
 /* 平滑淡出 class - 用于向上滚动时的下沉消失 */
 .animate-slide-fade-out {
-  animation: slide-fade-out 0.8s ease-in forwards;
+  animation: slide-fade-out 0.4s ease-in forwards;
 }
 
 /* 快速淡出 class */
