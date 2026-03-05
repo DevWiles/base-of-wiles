@@ -16,6 +16,9 @@ import GitIcon from '../assets/skills/git-svgrepo-com.svg'
 import DockerIcon from '../assets/skills/docker-svgrepo-com.svg'
 import HtmlIcon from '../assets/skills/html-5-svgrepo-com.svg'
 import TsIcon from '../assets/skills/typescript-svgrepo-com.svg'
+import IdeaIcon from '../assets/skills/intellij-idea-svgrepo-com.svg'
+import VscodeIcon from '../assets/skills/vscode-svgrepo-com.svg'
+import PycharmIcon from '../assets/skills/pycharm-svgrepo-com.svg'
 
 const skillIcons: Record<string, string> = {
   'react': ReactIcon,
@@ -30,6 +33,9 @@ const skillIcons: Record<string, string> = {
   'docker': DockerIcon,
   'html': HtmlIcon,
   'ts': TsIcon,
+  'idea': IdeaIcon,
+  'vscode': VscodeIcon,
+  'pycharm': PycharmIcon,
 }
 
 const categories: { id: SkillCategory | 'all'; label: string }[] = [

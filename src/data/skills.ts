@@ -25,5 +25,8 @@ export const skills: Skill[] = [
   { id: 'git', name: 'Git', level: 'advanced', category: 'tools' },
   { id: 'vite', name: 'Vite', level: 'advanced', category: 'tools' },
   { id: 'docker', name: 'Docker', level: 'beginner', category: 'tools' },
+  { id: 'idea', name: 'IntelliJ IDEA', level: 'advanced', category: 'tools' },
+  { id: 'vscode', name: 'VS Code', level: 'advanced', category: 'tools' },
+  { id: 'pycharm', name: 'PyCharm', level: 'advanced', category: 'tools' },
 ]
 
