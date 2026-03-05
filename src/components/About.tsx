@@ -1,4 +1,4 @@
-import profileImage from '../assets/profile.jpg'
+import profileImage from '../assets/about/profile.jpg'
 import { useIntersectionObserver } from '../hooks/useIntersectionObserver'
 
 const About = () => {
@@ -23,10 +23,10 @@ const About = () => {
             </span>
           </h2>
           <p className="mt-4 text-sm leading-relaxed text-gray-300 md:text-base">
-            🎓 毕业于广东工业大学计算机科学与技术专业，在校期间系统学习了数据结构、算法设计、操作系统、计算机网络等核心课程，奠定了扎实的理论基础。多次获得校级奖学金，并参与省级大学生创新创业训练计划项目，具备良好的学习能力和实践精神。
+            🎓 毕业于广东工业大学自动化专业，在校期间系统学习了数据结构、算法设计、操作系统、计算机网络等核心课程，奠定了扎实的理论基础。获得过校级奖学金，并参与大学生创新创业训练计划项目，做过深度学习相关科研，具备良好的学习能力和实践精神。
           </p>
           <p className="mt-4 text-sm leading-relaxed text-gray-300 md:text-base">
-            💻 专注于 Java 后端开发领域，拥有 5 年以上的实际项目开发经验。熟练掌握 Spring Boot、Spring Cloud、MyBatis、JPA 等主流框架，能够独立设计和搭建微服务架构。深入理解 JVM 内存模型、类加载机制、垃圾回收算法以及性能调优方法，能够在实际项目中运用多线程、并发编程技术解决复杂问题。
+            💻 专注于 Java 后端开发领域，拥有 2 年以上的实际项目开发经验。熟练掌握 Spring Boot、Spring Web、MyBatis、JPA 等主流框架，能够独立设计和搭建微服务架构。深入理解 JVM 内存模型、类加载机制、垃圾回收算法以及性能调优方法，能够在实际项目中运用多线程、并发编程技术解决复杂问题。
           </p>
           <p className="mt-4 text-sm leading-relaxed text-gray-300 md:text-base">
             🗄️ 在数据库方面，熟练使用 MySQL、PostgreSQL 等关系型数据库，掌握索引优化、查询优化、事务隔离级别等核心技术。同时熟悉 Redis、MongoDB 等 NoSQL 数据库，能够根据业务场景选择合适的存储方案。具备分布式系统设计经验，了解 CAP 理论、BASE 理论，实践过分布式锁、分布式事务、消息队列等技术方案。

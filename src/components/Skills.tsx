@@ -3,6 +3,35 @@ import type { Skill, SkillCategory } from '../data/skills'
 import { skills } from '../data/skills'
 import { useIntersectionObserver } from '../hooks/useIntersectionObserver'
 
+// 技能图标映射
+import ReactIcon from '../assets/skills/react-svgrepo-com.svg'
+import TailwindIcon from '../assets/skills/tailwindcss-icon-svgrepo-com.svg'
+import ViteIcon from '../assets/skills/vite-svgrepo-com.svg'
+import NodejsIcon from '../assets/skills/nodejs-svgrepo-com.svg'
+import JavaIcon from '../assets/skills/java-svgrepo-com.svg'
+import SpringIcon from '../assets/skills/spring-svgrepo-com.svg'
+import PythonIcon from '../assets/skills/python-svgrepo-com.svg'
+import MysqlIcon from '../assets/skills/mysql-svgrepo-com.svg'
+import GitIcon from '../assets/skills/git-svgrepo-com.svg'
+import DockerIcon from '../assets/skills/docker-svgrepo-com.svg'
+import HtmlIcon from '../assets/skills/html-5-svgrepo-com.svg'
+import TsIcon from '../assets/skills/typescript-svgrepo-com.svg'
+
+const skillIcons: Record<string, string> = {
+  'react': ReactIcon,
+  'tailwind': TailwindIcon,
+  'vite': ViteIcon,
+  'node': NodejsIcon,
+  'java': JavaIcon,
+  'spring': SpringIcon,
+  'python': PythonIcon,
+  'mysql': MysqlIcon,
+  'git': GitIcon,
+  'docker': DockerIcon,
+  'html': HtmlIcon,
+  'ts': TsIcon,
+}
+
 const categories: { id: SkillCategory | 'all'; label: string }[] = [
   { id: 'all', label: '全部' },
   { id: 'frontend', label: '前端' },
@@ -20,8 +49,8 @@ const Skills = () => {
   const [activeCategory, setActiveCategory] = useState<SkillCategory | 'all'>('all')
   const filtered = filterSkills(activeCategory)
   
-  // 计算需要多少个占位卡片来保持高度一致（基于 3 列 × 6 行 = 18 个位置）
-  const maxCards = 18
+  // 计算需要多少个占位卡片来保持高度一致（基于 3 列 × 4 行 = 12 个位置）
+  const maxCards = 12
   const placeholderCount = maxCards - filtered.length
 
   return (
@@ -63,24 +92,38 @@ const Skills = () => {
         </div>
 
         <div className="mt-8 grid gap-4 sm:grid-cols-2 md:grid-cols-3">
-          {filtered.map((skill) => (
-            <div
-              key={skill.id}
-              className="group relative rounded-2xl border border-white/5 bg-white/5 p-4 shadow-sm shadow-black/40 transition-transform duration-300 hover:scale-[1.02] hover:shadow-2xl hover:shadow-black/70"
-            >
-              <p className="text-sm font-medium text-white">{skill.name}</p>
-              <p className="mt-1 text-xs text-gray-400">
-                {skill.category === 'frontend' && '前端'}
-                {skill.category === 'backend' && '后端'}
-                {skill.category === 'tools' && '工具'}
-              </p>
-              <p className="mt-2 inline-flex rounded-full bg-white/10 px-2 py-0.5 text-xs text-gray-200">
-                {skill.level === 'advanced' && '熟练使用'}
-                {skill.level === 'intermediate' && '日常开发'}
-                {skill.level === 'beginner' && '正在学习'}
-              </p>
-            </div>
-          ))}
+          {filtered.map((skill) => {
+            const IconComponent = skillIcons[skill.id]
+            return (
+              <div
+                key={skill.id}
+                className="group relative rounded-2xl border border-white/5 bg-white/5 p-4 shadow-sm shadow-black/40 transition-transform duration-300 hover:scale-[1.02] hover:shadow-2xl hover:shadow-black/70"
+              >
+                <div className="flex items-start justify-between gap-3">
+                  <div className="flex-1">
+                    <p className="text-sm font-medium text-white">{skill.name}</p>
+                    <p className="mt-1 text-xs text-gray-400">
+                      {skill.category === 'frontend' && '前端'}
+                      {skill.category === 'backend' && '后端'}
+                      {skill.category === 'tools' && '工具'}
+                    </p>
+                    <p className="mt-2 inline-flex rounded-full bg-white/10 px-2 py-0.5 text-xs text-gray-200">
+                      {skill.level === 'advanced' && '熟练使用'}
+                      {skill.level === 'intermediate' && '日常开发'}
+                      {skill.level === 'beginner' && '正在学习'}
+                    </p>
+                  </div>
+                  <div className="shrink-0 opacity-80 transition-opacity group-hover:opacity-100">
+                    <img 
+                      src={IconComponent} 
+                      alt={skill.name} 
+                      className="h-16 w-16 object-contain"
+                    />
+                  </div>
+                </div>
+              </div>
+            )
+          })}
           {/* 占位卡片，保持高度一致 */}
           {Array.from({ length: placeholderCount }).map((_, index) => (
             <div
