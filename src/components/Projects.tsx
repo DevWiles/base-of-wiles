@@ -1,10 +1,15 @@
 import { projects } from '../data/projects'
+import { useIntersectionObserver } from '../hooks/useIntersectionObserver'
 
 const Projects = () => {
+  const { ref, isIntersecting } = useIntersectionObserver<HTMLElement>({ threshold: 0.1 })
   return (
     <section
       id="projects"
-      className="bg-background px-4 py-20"
+      ref={ref}
+      className={`bg-background px-4 py-20 transition-all duration-700 ease-out ${
+        isIntersecting ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+      }`}
     >
       <div className="mx-auto max-w-4xl">
         <header className="flex flex-col items-center text-center">
