@@ -17,12 +17,20 @@ export const projects: Project[] = [
     link: 'https://github.com/DevWiles/developer-blog/tree/main/portfolio',
   },
   {
-    id: 'lingchat',
-    title: '灵雀轻聊-LingChat',
+    id: 'lingchat-server',
+    title: '灵雀轻聊-LingChat-后端',
     description: '一个分布式的即时通讯系统，基于 Spring Cloud、Spring Boot、Kafka、Redis、MySQL、React等技术实现。',
-    techStack: ['Full Stack', 'Java', 'Kafka', 'Redis', 'MySQL', 'Spring Cloud', 'SpringBoot', 'React'],
+    techStack: ['Backend', 'Java', 'Kafka', 'Redis', 'MySQL', 'Spring Cloud', 'SpringBoot', 'React'],
     imageUrl: 'https://via.placeholder.com/600x360?text=Blog',
     link: 'https://github.com/DevWiles/LingChat',
   },
+  {
+  id: 'lingchat-client',
+  title: '灵雀轻聊-LingChat-前端',
+  description: '一个分布式的即时通讯系统的网页端，基于React框架实现。',
+  techStack: ['Frontend', 'React', 'TypeScript', 'Vite', 'Tailwind CSS'],
+  imageUrl: 'https://via.placeholder.com/600x360?text=Blog',
+  link: 'https://github.com/DevWiles/lingchat-web',
+  }
 ]
 
