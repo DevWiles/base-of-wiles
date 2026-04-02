@@ -23,7 +23,7 @@ const Hero = () => {
     >
       <div className="mx-auto max-w-3xl text-center">
         <p 
-          className={`text-sm uppercase tracking-[0.3em] text-sky-400/80 transition-all duration-1000 ease-out transform ${
+          className={`text-sm uppercase tracking-[0.3em] text-black transition-all duration-1000 ease-out transform ${
             contentVisible ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-8'
           }`}
         >
@@ -31,7 +31,7 @@ const Hero = () => {
         </p>
         <h1 className="mt-4 text-4xl font-bold sm:text-5xl md:text-6xl">
           <span
-            className={`bg-gradient-to-r from-sky-400 via-purple-400 to-pink-500 bg-clip-text text-transparent transition-all duration-1000 ease-out ${
+            className={`text-blue-500 transition-all duration-1000 ease-out ${
               titleAnimated ? 'opacity-100' : 'opacity-0'
             }`}
             style={{ transitionDelay: titleAnimated ? '600ms' : '100ms' }}
@@ -39,7 +39,7 @@ const Hero = () => {
             你好，
           </span>
           <span
-            className={`bg-gradient-to-r from-sky-400 via-purple-400 to-pink-500 bg-clip-text text-transparent transition-all duration-700 ease-out ${
+            className={`text-blue-500 transition-all duration-700 ease-out ${
               titleAnimated ? 'opacity-100' : 'opacity-0'
             }`}
             style={{ transitionDelay: titleAnimated ? '900ms' : '100ms' }}
@@ -47,7 +47,7 @@ const Hero = () => {
             我
           </span>
           <span
-            className={`bg-gradient-to-r from-sky-400 via-purple-400 to-pink-500 bg-clip-text text-transparent transition-all duration-700 ease-out ${
+            className={`text-blue-500 transition-all duration-700 ease-out ${
               titleAnimated ? 'opacity-100' : 'opacity-0'
             }`}
             style={{ transitionDelay: titleAnimated ? '1000ms' : '100ms' }}
@@ -55,7 +55,7 @@ const Hero = () => {
             是
           </span>
           <span
-            className={`text-white transition-all duration-1500 ease-out ${
+            className={`text-black transition-all duration-1500 ease-out ${
               titleAnimated ? 'opacity-100' : 'opacity-0'
             }`}
             style={{ transitionDelay: titleAnimated ? '1300ms' : '100ms' }}
@@ -64,11 +64,11 @@ const Hero = () => {
           </span>
         </h1>
         <p 
-          className={`mt-6 text-base text-gray-300 sm:text-lg transition-all duration-1000 ease-out transform ${
+          className={`mt-6 text-lg font-medium text-black sm:text-xl transition-all duration-1000 ease-out transform ${
             contentVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
           }`}
         >
-          我的主业是 JAVA 后端开发者，随着 AI 技术的发展，我得以开发不同语言、技术栈和需求的项目。我想通过博客把我的技能和经验分享给别人。
+          “专注于后端开发，熟悉 Java、Python等主流语言，在 AI Agent 的赋能下，努力成长为一个全栈开发者，享受创造的美好”
         </p>
         <div 
           className={`mt-4 flex flex-wrap justify-center gap-4 transition-all duration-1000 ease-out delay-300 transform ${
@@ -77,32 +77,30 @@ const Hero = () => {
         >
           <a
             href="#projects"
-            className="rounded-full bg-gradient-to-r from-sky-500 to-purple-500 px-6 py-2 text-sm font-medium text-white shadow-lg shadow-sky-500/30 transition hover:brightness-110"
+            className="rounded-full bg-blue-500 px-6 py-2 text-sm font-medium text-white shadow-lg shadow-blue-500/30 transition hover:brightness-110"
           >
             查看项目
           </a>
           <a
             href="#contact"
-            className="rounded-full border border-white/20 px-6 py-2 text-sm font-medium text-gray-200 transition hover:border-sky-400 hover:text-white"
+            className="rounded-full border border-white/20 bg-black px-6 py-2 text-sm font-medium text-gray-200 transition hover:bg-gray-800"
           >
             联系我
           </a>
         </div>
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center justify-center">
-          <span className="text-sm text-gray-400">Scroll</span>
-          <div className="mt-2 animate-bounce">
-            <svg
-              className="h-6 w-6 text-gray-400"
-              fill="none"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
-            </svg>
-          </div>
+        <div className="absolute bottom-8 left-1/2 flex -translate-x-1/2 transform flex-col items-center gap-1 animate-bounce">
+          <span className="text-sm text-black">Scroll</span>
+          <svg
+            className="h-6 w-6 text-blue-500"
+            fill="none"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth="2"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+          </svg>
         </div>
       </div>
     </section>
