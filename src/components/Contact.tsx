@@ -39,15 +39,15 @@ const Contact = () => {
       }`}
     >
       <div className="mx-auto max-w-5xl">
-        <h2 className="text-2xl font-semibold text-white md:text-3xl">联系方式</h2>
-        <p className="mt-3 text-sm text-gray-300 md:text-base">
+        <h2 className="text-2xl font-semibold text-black md:text-3xl">联系方式</h2>
+        <p className="mt-3 text-sm text-black md:text-base">
           如果你对我的项目或经历感兴趣，欢迎通过以下方式联系我。
         </p>
 
         <div className="mt-8 grid gap-6 md:grid-cols-3">
           <a
             onClick={handleEmailClick}
-            className="group relative flex items-center justify-between gap-4 rounded-2xl border border-gray-200 bg-white p-4 text-sm text-gray-700 shadow-md shadow-black/10 transition-all duration-300 hover:scale-[1.02] hover:border-sky-400 hover:bg-gray-50 hover:shadow-xl hover:shadow-black/20 cursor-pointer"
+            className="group relative flex items-center justify-between gap-4 rounded-2xl border border-gray-200 bg-white p-4 text-sm text-gray-700 shadow-md shadow-black/10 transition-all duration-300 hover:scale-[1.02] hover:border-black/20 hover:bg-gray-50 hover:shadow-xl hover:shadow-black/20 cursor-pointer"
           >
             <div>
               <p className="font-medium text-gray-900">Gmail</p>
@@ -65,7 +65,7 @@ const Contact = () => {
             href="https://github.com/DevWiles"
             target="_blank"
             rel="noreferrer"
-            className="group relative flex items-center justify-between gap-4 rounded-2xl border border-gray-200 bg-white p-4 text-sm text-gray-700 shadow-md shadow-black/10 transition-all duration-300 hover:scale-[1.02] hover:border-sky-400 hover:bg-gray-50 hover:shadow-xl hover:shadow-black/20"
+            className="group relative flex items-center justify-between gap-4 rounded-2xl border border-gray-200 bg-white p-4 text-sm text-gray-700 shadow-md shadow-black/10 transition-all duration-300 hover:scale-[1.02] hover:border-black/20 hover:bg-gray-50 hover:shadow-xl hover:shadow-black/20"
           >
             <div>
               <p className="font-medium text-gray-900">GitHub</p>
@@ -81,7 +81,7 @@ const Contact = () => {
             href="https://b23.tv/bi25Af4"
             target="_blank"
             rel="noopener noreferrer"
-            className="group relative flex items-center justify-between gap-4 rounded-2xl border border-gray-200 bg-white p-4 text-sm text-gray-700 shadow-md shadow-black/10 transition-all duration-300 hover:scale-[1.02] hover:border-sky-400 hover:bg-gray-50 hover:shadow-xl hover:shadow-black/20"
+            className="group relative flex items-center justify-between gap-4 rounded-2xl border border-gray-200 bg-white p-4 text-sm text-gray-700 shadow-md shadow-black/10 transition-all duration-300 hover:scale-[1.02] hover:border-black/20 hover:bg-gray-50 hover:shadow-xl hover:shadow-black/20"
           >
             <div>
               <p className="font-medium text-gray-900">Bilibili</p>

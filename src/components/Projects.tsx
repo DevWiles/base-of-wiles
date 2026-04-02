@@ -1,5 +1,6 @@
 import { projects } from '../data/projects'
 import { useIntersectionObserver } from '../hooks/useIntersectionObserver'
+import githubIcon from '../assets/contact/github.svg'
 
 const Projects = () => {
   const { ref, isIntersecting, isExiting } = useIntersectionObserver<HTMLElement>({ threshold: 0.18, downwardOnly: true })
@@ -18,15 +19,15 @@ const Projects = () => {
       <div className="mx-auto max-w-4xl">
         <header className="flex flex-col items-center text-center">
           <div>
-            <h2 className="text-2xl font-semibold md:text-3xl">
-              <span className="text-red-500">
+            <h2 className="text-2xl font-semibold md:text-5xl">
+              <span className="text-black">
                 项
               </span>
-              <span className="text-white">
+              <span className="text-blue-500">
                 目
               </span>
             </h2>
-            <p className="mt-3 max-w-2xl text-sm text-gray-300 md:text-base">
+            <p className="mt-3 max-w-2xl text-sm text-black md:text-base">
             这些项目体现了我日常依靠编程提高生产力和生活质量的经历，说不定也能帮到你。
             </p>
           </div>
@@ -49,13 +50,13 @@ const Projects = () => {
               </div>
 
               <div className="relative flex flex-1 flex-col gap-2 p-4 pr-10">
-                <h3 className="text-lg font-semibold text-white">{project.title}</h3>
-                <p className="text-sm text-gray-300">{project.description}</p>
-                <div className="mt-2 flex flex-wrap gap-3">
+                <h3 className="text-lg font-semibold text-black">{project.title}</h3>
+                <p className="text-sm text-gray-600">{project.description}</p>
+                <div className="mt-2 flex flex-wrap gap-2">
                   {project.techStack.map((tech) => (
                     <span
                       key={tech}
-                      className="rounded-full bg-white/10 px-2 py-0.5 text-xs text-gray-200"
+                      className="rounded-full border border-gray-300 bg-white/10 px-2 py-0.5 text-xs text-black"
                     >
                       {tech}
                     </span>
@@ -66,25 +67,14 @@ const Projects = () => {
                     href={project.link}
                     target="_blank"
                     rel="noreferrer"
-                    className="absolute bottom-3 right-3 inline-flex h-7 w-7 items-center justify-center rounded-full bg-white/10 text-gray-200 transition hover:bg-white/20 hover:text-white"
+                    className="absolute bottom-3 right-3 inline-flex h-8 w-8 items-center justify-center rounded-full bg-white/10 transition hover:bg-white/20"
                     aria-label="在 GitHub 查看项目"
                   >
-                    <svg
-                      viewBox="0 0 16 16"
-                      aria-hidden="true"
-                      className="h-4 w-4"
-                    >
-                      <path
-                        fill="currentColor"
-                        d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38
-                        0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52
-                        0-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95
-                        0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09
-                        2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15
-                        0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.19
-                        0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8Z"
-                      />
-                    </svg>
+                    <img
+                      src={githubIcon}
+                      alt="GitHub"
+                      className="h-6 w-6 flex-shrink-0"
+                    />
                   </a>
                 )}
               </div>
