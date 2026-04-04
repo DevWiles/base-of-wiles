@@ -88,9 +88,10 @@ const Hero = () => {
             联系我
           </a>
         </div>
-        <div className="absolute bottom-8 left-1/2 flex -translate-x-1/2 transform flex-col items-center gap-1 animate-bounce">
-          <span className="text-sm text-black">Scroll</span>
-          <svg
+      </div>
+      <div className="absolute bottom-8 left-0 right-0 mx-auto flex w-fit flex-col items-center gap-1 animate-bounce">
+        <span className="text-sm text-black">Scroll</span>
+        <svg
             className="h-6 w-6 text-blue-500"
             fill="none"
             strokeLinecap="round"
@@ -98,10 +99,9 @@ const Hero = () => {
             strokeWidth="2"
             viewBox="0 0 24 24"
             stroke="currentColor"
-          >
-            <path d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
-          </svg>
-        </div>
+        >
+          <path d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+        </svg>
       </div>
     </section>
   )
