@@ -49,33 +49,38 @@ const Projects = () => {
                 <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0,transparent_40%,rgba(0,0,0,0.9)_100%)] opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
               </div>
 
-              <div className="relative flex flex-1 flex-col gap-2 p-4 pr-10">
-                <h3 className="text-lg font-semibold text-black">{project.title}</h3>
-                <p className="text-sm text-gray-600">{project.description}</p>
-                <div className="mt-2 flex flex-wrap gap-2">
-                  {project.techStack.map((tech) => (
-                    <span
-                      key={tech}
-                      className="rounded-full border border-gray-300 bg-white/10 px-2 py-0.5 text-xs text-black"
-                    >
-                      {tech}
-                    </span>
-                  ))}
+              <div className="relative flex flex-1 flex-col">
+                <div className="flex-1 flex-col gap-2 p-4">
+                  <h3 className="text-lg font-semibold text-black">{project.title}</h3>
+                  <p className="text-sm text-gray-600">{project.description}</p>
+                  <div className="mt-2 flex flex-wrap gap-2">
+                    {project.techStack.map((tech) => (
+                      <span
+                        key={tech}
+                        className="rounded-full border border-gray-300 bg-white/10 px-2 py-0.5 text-xs text-black"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
                 </div>
+                
                 {project.link && project.link !== '#' && (
-                  <a
-                    href={project.link}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="absolute bottom-3 right-3 inline-flex h-8 w-8 items-center justify-center rounded-full bg-white/10 transition hover:bg-white/20"
-                    aria-label="在 GitHub 查看项目"
-                  >
-                    <img
-                      src={githubIcon}
-                      alt="GitHub"
-                      className="h-6 w-6 flex-shrink-0"
-                    />
-                  </a>
+                  <div className="flex justify-end p-4 pt-0">
+                    <a
+                      href={project.link}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-white/10 transition hover:bg-white/20"
+                      aria-label="在 GitHub 查看项目"
+                    >
+                      <img
+                        src={githubIcon}
+                        alt="GitHub"
+                        className="h-6 w-6 flex-shrink-0"
+                      />
+                    </a>
+                  </div>
                 )}
               </div>
             </article>
