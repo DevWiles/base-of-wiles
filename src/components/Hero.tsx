@@ -68,7 +68,7 @@ const Hero = () => {
             contentVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
           }`}
         >
-          “专注于后端开发，熟悉 Java、Python等主流语言，在 AI Agent 的赋能下，努力成长为一个全栈开发者，享受创造的美好”
+          “专注于后端开发，熟悉 Java、Python等主流语言，喜欢钻研金融交易策略，活跃在加密市场，努力在 AI 赋能下成长为优秀的软件工程师和金融交易员”
         </p>
         <div 
           className={`mt-4 flex flex-wrap justify-center gap-4 transition-all duration-1000 ease-out delay-300 transform ${
