@@ -65,21 +65,47 @@ const Projects = () => {
                   </div>
                 </div>
                 
-                {project.link && project.link !== '#' && (
-                  <div className="flex justify-end p-4 pt-0">
-                    <a
-                      href={project.link}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-white/10 transition hover:bg-white/20"
-                      aria-label="在 GitHub 查看项目"
-                    >
-                      <img
-                        src={githubIcon}
-                        alt="GitHub"
-                        className="h-6 w-6 flex-shrink-0"
-                      />
-                    </a>
+                {(project.link || project.websiteUrl) && (
+                  <div className="flex justify-end gap-2 p-4 pt-0">
+                    {project.websiteUrl && (
+                      <a
+                        href={project.websiteUrl}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-white/10 transition hover:bg-white/20"
+                        aria-label="访问项目网站"
+                      >
+                        <svg
+                          className="h-4 w-4 text-black"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                          aria-hidden="true"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                          />
+                        </svg>
+                      </a>
+                    )}
+                    {project.link && (
+                      <a
+                        href={project.link}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-white/10 transition hover:bg-white/20"
+                        aria-label="在 GitHub 查看项目"
+                      >
+                        <img
+                          src={githubIcon}
+                          alt="GitHub"
+                          className="h-6 w-6 flex-shrink-0"
+                        />
+                      </a>
+                    )}
                   </div>
                 )}
               </div>
