@@ -1,0 +1,45 @@
+---
+description: 完成任务后自动 commit 并 push 到 GitHub
+alwaysApply: true
+---
+
+# 自动 Commit 与 Push
+
+在本项目中，完成用户请求的代码或文档改动后，**无需用户再次确认**，自动执行 git commit 与 push。
+
+## 触发时机
+
+- 用户任务已完成，且工作区有未提交的改动时
+- 不要在任务中途、或用户仅提问/审查（未要求改代码）时提交
+
+## Commit 流程
+
+1. 并行检查：`git status`、`git diff`、`git log -1 --oneline`（了解提交风格）
+2. 分析改动，撰写 1–2 句 commit message，说明 **why** 而非罗列 what
+3. 顺序执行：
+   - `git add` 相关文件（排除 `.env`、密钥等敏感文件）
+   - `git commit`（用 HEREDOC 传 message）
+   - `git push origin HEAD`
+   - `git status` 验证成功
+
+## 安全约束
+
+- 不修改 git config
+- 不执行 destructive 命令（force push、hard reset 等）
+- 不 skip hooks（`--no-verify` 等）
+- 不向 main/master 做 force push
+- pre-commit hook 失败时：修复问题后**新建 commit**，不要 amend
+- 无改动时不创建空 commit
+
+## Commit Message 示例
+
+```
+chore: 将 package.json 调整为开源项目配置
+
+移除 private 标记并补充 repository、license 等元数据。
+```
+
+## Push 目标
+
+- 远程：`origin`
+- 分支：当前分支（通常为 `main`）

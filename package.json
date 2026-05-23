@@ -1,8 +1,17 @@
 {
-  "name": "portfolio",
-  "private": true,
+  "name": "base-of-wiles",
   "version": "0.0.0",
+  "description": "Wiles 的个人作品集单页网站，基于 React、TypeScript 与 Tailwind CSS 构建",
   "type": "module",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/DevWiles/base-of-wiles.git"
+  },
+  "bugs": {
+    "url": "https://github.com/DevWiles/base-of-wiles/issues"
+  },
+  "homepage": "https://github.com/DevWiles/base-of-wiles#readme",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",

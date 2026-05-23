@@ -94,4 +94,4 @@ npm run lint
 
 ## License
 
-私有项目（`package.json` 中 `"private": true`）。如需开源，请自行补充许可证文件。
+[MIT](LICENSE)
