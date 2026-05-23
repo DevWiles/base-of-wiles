@@ -1,4 +1,4 @@
-import profileImage from '../assets/about/profile.jpg'
+import profileImage from '../assets/images/about/profile.jpg'
 import { useIntersectionObserver } from '../hooks/useIntersectionObserver'
 
 const About = () => {

@@ -124,12 +124,14 @@ npm run lint     # ESLint 代码检查
 
 ```
 base-of-wiles/
-├── 📂 public/              # 静态资源（favicon、项目封面、resume.pdf）
+├── 📂 public/              # 仅固定 URL 静态文件（favicon、resume.pdf）
 ├── 📂 src/
 │   ├── 🧩 components/      # Header · Hero · About · Skills · Projects · Contact · Footer
 │   ├── 📊 data/            # projects.ts · skills.ts
 │   ├── 🪝 hooks/           # useIntersectionObserver.ts
-│   ├── 🖼 assets/           # 技能图标 · 联系方式图标 · 头像
+│   ├── 🖼 assets/
+│   │   ├── images/         # about/ · projects/（封面、头像等位图）
+│   │   └── icons/          # contact/ · skills/（SVG 图标）
 │   ├── 🎨 index.css        # Tailwind + 动画 keyframes
 │   └── 📄 App.tsx          # 页面组装与平滑滚动
 └── 📂 docs/plans/          # 滚动动画设计文档
@@ -141,14 +143,14 @@ base-of-wiles/
 
 ### 📌 添加项目
 
-编辑 [`src/data/projects.ts`](src/data/projects.ts)：
+编辑 [`src/data/projects.ts`](src/data/projects.ts)，封面图放入 `src/assets/images/projects/` 并在 [`index.ts`](src/assets/images/projects/index.ts) 中导出：
 
 | 字段 | 说明 |
 |:---|:---|
 | `title` | 项目名称 |
 | `description` | 简短描述 |
 | `techStack` | 技术标签数组 |
-| `imageUrl` | 封面图（建议 `public/projects/`） |
+| `imageUrl` | 封面图（从 `assets/images/projects` 导入） |
 | `link` | GitHub 或项目地址 |
 
 ### 🎯 调整技能
@@ -159,8 +161,11 @@ base-of-wiles/
 
 | 资源 | 路径 |
 |:---|:---|
-| 个人头像 | `src/assets/about/profile.jpg` |
+| 个人头像 | `src/assets/images/about/profile.jpg` |
+| 项目封面 | `src/assets/images/projects/` |
+| 联系/技能图标 | `src/assets/icons/contact/` · `src/assets/icons/skills/` |
 | PDF 简历 | `public/resume.pdf` |
+| 站点 favicon | `public/wiles.svg` |
 
 ---
 

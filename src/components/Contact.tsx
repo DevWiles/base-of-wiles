@@ -1,6 +1,6 @@
-import gmailIcon from '../assets/contact/gmail.svg'
-import githubIcon from '../assets/contact/github.svg'
-import bilibiliIcon from '../assets/contact/bilibili.svg'
+import gmailIcon from '../assets/icons/contact/gmail.svg'
+import githubIcon from '../assets/icons/contact/github.svg'
+import bilibiliIcon from '../assets/icons/contact/bilibili.svg'
 import { useState } from 'react'
 import { useIntersectionObserver } from '../hooks/useIntersectionObserver'
 

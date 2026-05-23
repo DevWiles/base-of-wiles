@@ -1,6 +1,6 @@
 import { projects } from '../data/projects'
 import { useIntersectionObserver } from '../hooks/useIntersectionObserver'
-import githubIcon from '../assets/contact/github.svg'
+import githubIcon from '../assets/icons/contact/github.svg'
 
 const Projects = () => {
   const { ref, isIntersecting, isExiting } = useIntersectionObserver<HTMLElement>({ threshold: 0.18, downwardOnly: true })
