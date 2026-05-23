@@ -12,7 +12,8 @@ export const projects: Project[] = [
   {
     id: 'portfolio',
     title: "Wiles's base",
-    description: '利用Vibe Coding技术，使用 React、TypeScript 和 Tailwind CSS 构建的单页个人作品集网站。',
+    description:
+      '开源的单页个人作品集，涵盖关于我、技能展示、项目卡片与联系方式，支持首屏动效与滚动渐显，已部署上线。',
     techStack: ['Frontend', 'React', 'TypeScript', 'Vite', 'Tailwind CSS'],
     imageUrl: '/projects/portfolio.png',
     link: 'https://github.com/DevWiles/base-of-wiles',
