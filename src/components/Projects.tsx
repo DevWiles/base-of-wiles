@@ -16,7 +16,7 @@ const Projects = () => {
             : 'slide-fade-reset'
       }`}
     >
-      <div className="mx-auto max-w-4xl">
+      <div className="mx-auto max-w-7xl">
         <header className="flex flex-col items-center text-center">
           <div>
             <h2 className="text-2xl font-semibold md:text-5xl">
@@ -33,11 +33,11 @@ const Projects = () => {
           </div>
         </header>
 
-        <div className="mt-8 grid gap-y-8 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-8 grid grid-cols-1 justify-items-center gap-x-6 gap-y-8 sm:grid-cols-2 lg:grid-cols-4">
           {projects.map((project) => (
             <article
               key={project.id}
-              className="group relative flex aspect-[30/52] w-[92%] flex-col overflow-hidden rounded-2xl border border-white/10 bg-white/5 shadow-md shadow-black/40 transition-transform duration-300 hover:scale-[1.02] hover:shadow-2xl hover:shadow-black/70"
+              className="group relative flex aspect-[30/52] w-[275px] flex-col overflow-hidden rounded-2xl border border-white/10 bg-white/5 shadow-md shadow-black/40 transition-transform duration-300 hover:scale-[1.02] hover:shadow-2xl hover:shadow-black/70"
             >
               <div className="relative flex-[0_0_33%] w-full overflow-hidden">
                 <img
