@@ -14,7 +14,7 @@ export const projects: Project[] = [
     description: '利用Vibe Coding技术，使用 React、TypeScript 和 Tailwind CSS 构建的单页个人作品集网站。',
     techStack: ['Frontend', 'React', 'TypeScript', 'Vite', 'Tailwind CSS'],
     imageUrl: '/projects/portfolio.png',
-    link: 'https://github.com/DevWiles/developer-blog/tree/main/portfolio',
+    link: 'https://github.com/DevWiles/base-of-wiles',
   },
   {
     id: 'lingchat-server',
