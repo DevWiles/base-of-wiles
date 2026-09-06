@@ -1,0 +1,64 @@
+name: Deploy Portfolio
+
+on:
+  push:
+    branches: [ main ]
+    paths-ignore:
+      - '**.md'
+      - 'LICENSE'
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-portfolio
+  cancel-in-progress: true
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+
+      - name: Install & build
+        run: |
+          npm ci
+          npm run build
+
+      - name: Show artifact size
+        run: |
+          echo "--- 产物体积 ---"
+          du -sh dist
+          find dist -type f -size +500k -exec ls -lh {} \; | awk '{print $5, $9}'
+
+      - name: Set up SSH
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/deploy_key
+          chmod 600 ~/.ssh/deploy_key
+
+      - name: Deploy
+        env:
+          HOST: ${{ secrets.SERVER_HOST }}
+          USER: ${{ secrets.SERVER_USER }}
+          PATH_REMOTE: ${{ secrets.DEPLOY_PATH }}
+        run: |
+          SSH="ssh -i ~/.ssh/deploy_key -o StrictHostKeyChecking=no"
+          # 先传到 staging，再原子换入，避免用户在传输过程中看到半截站点
+          rsync -az --delete -e "$SSH" dist/ "$USER@$HOST:$PATH_REMOTE/staging/"
+          $SSH "$USER@$HOST" "rsync -a --delete '$PATH_REMOTE/staging/' '$PATH_REMOTE/site/' && echo '已换入 site/'"
+
+      - name: Verify
+        run: |
+          code=$(curl -s -o /dev/null -w '%{http_code}' --max-time 20 https://portfolio.devwiles.online/)
+          echo "https://portfolio.devwiles.online/ -> HTTP $code"
+          [ "$code" = "200" ] || exit 1
+          # 确认拿到的是构建产物而非占位页
+          curl -s --max-time 20 https://portfolio.devwiles.online/ | grep -q '/assets/index-' \
+            && echo "构建产物已生效" || { echo "页面内容不是构建产物"; exit 1; }
