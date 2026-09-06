@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+# 简历含个人联系方式，禁止收录
+Disallow: /resume.pdf

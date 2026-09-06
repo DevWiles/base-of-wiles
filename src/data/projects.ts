@@ -12,6 +12,16 @@ export type Project = {
 
 export const projects: Project[] = [
   {
+    id: 'pmhub',
+    title: 'PmHub · 项目管理系统',
+    description:
+      '基于 Spring Cloud 的微服务项目管理系统，含项目任务管理、Flowable 工作流审批与 RBAC 权限体系。我完成了生产环境的完整落地：Nacos 注册配置中心 + Gateway 网关 + 四个业务服务的部署编排、GitHub Actions 全自动 CI/CD、以及在 4G 内存机器上的 JVM 与中间件调优，并修复了上游验证码失效等缺陷。',
+    techStack: ['Backend', 'Java', 'Spring Cloud', 'Nacos', 'Gateway', 'Flowable', 'MySQL', 'Redis', 'Vue'],
+    imageUrl: projectImages.pmhub,
+    link: 'https://github.com/DevWiles/Project-Manager-Hub',
+    websiteUrl: 'https://pmhub.devwiles.online/',
+  },
+  {
     id: 'portfolio',
     title: "Wiles's base",
     description:
@@ -19,7 +29,7 @@ export const projects: Project[] = [
     techStack: ['Frontend', 'React', 'TypeScript', 'Vite', 'Tailwind CSS'],
     imageUrl: projectImages.portfolio,
     link: 'https://github.com/DevWiles/base-of-wiles',
-    websiteUrl: 'https://devwiles.vercel.app/',
+    websiteUrl: 'https://portfolio.devwiles.online/',
   },
   {
     id: 'taoligo',
