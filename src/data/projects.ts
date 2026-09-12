@@ -12,6 +12,15 @@ export type Project = {
 
 export const projects: Project[] = [
   {
+    id: 'interview',
+    title: '面试题复习系统',
+    description:
+      '从零独立开发并上线的面试备考工具,前后端分离。复习按艾宾浩斯遗忘曲线(SM-2)自动排期;模拟面试随机抽题后由 LLM 对照参考答案打分,指出漏答要点与改进方向;另有选择题专项训练与错题本。自建单账号鉴权,GitHub Actions 全自动部署。点右下角可进入演示站,数据刷新即还原。',
+    techStack: ['Full Stack', 'Java', 'Spring Boot', 'MySQL', 'Vue 3', 'Element Plus', 'LLM'],
+    imageUrl: projectImages.interview,
+    websiteUrl: 'https://demo.interview.devwiles.online/',
+  },
+  {
     id: 'pmhub',
     title: 'PmHub · 项目管理系统',
     description:
