@@ -49,11 +49,13 @@ const Projects = () => {
                 <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0,transparent_40%,rgba(0,0,0,0.9)_100%)] opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
               </div>
 
-              <div className="relative flex flex-1 flex-col">
-                <div className="flex-1 flex-col gap-2 p-4">
-                  <h3 className="text-lg font-semibold text-black">{project.title}</h3>
-                  <p className="text-sm text-gray-600">{project.description}</p>
-                  <div className="mt-2 flex flex-wrap gap-2">
+              {/* 卡片是固定宽高比 + overflow-hidden。内容区必须加 min-h-0 才能被压缩,
+                  否则描述一长就会把下面的链接区顶出卡片、被裁掉(看不到访问网站的图标)。 */}
+              <div className="relative flex min-h-0 flex-1 flex-col">
+                <div className="flex min-h-0 flex-1 flex-col gap-2 overflow-hidden p-4">
+                  <h3 className="shrink-0 text-lg font-semibold text-black">{project.title}</h3>
+                  <p className="line-clamp-6 text-sm text-gray-600">{project.description}</p>
+                  <div className="mt-auto flex flex-wrap gap-2 pt-2">
                     {project.techStack.map((tech) => (
                       <span
                         key={tech}
@@ -66,7 +68,7 @@ const Projects = () => {
                 </div>
                 
                 {(project.link || project.websiteUrl) && (
-                  <div className="flex justify-end gap-2 p-4 pt-0">
+                  <div className="flex shrink-0 justify-end gap-2 p-4 pt-0">
                     {project.websiteUrl && (
                       <a
                         href={project.websiteUrl}

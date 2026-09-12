@@ -15,20 +15,10 @@ export const projects: Project[] = [
     id: 'interview',
     title: '面试题复习系统',
     description:
-      '从零独立开发并上线的面试备考工具,前后端分离。复习按艾宾浩斯遗忘曲线(SM-2)自动排期;模拟面试随机抽题后由 LLM 对照参考答案打分,指出漏答要点与改进方向;另有选择题专项训练与错题本。自建单账号鉴权,GitHub Actions 全自动部署。点右下角可进入演示站,数据刷新即还原。',
-    techStack: ['Full Stack', 'Java', 'Spring Boot', 'MySQL', 'Vue 3', 'Element Plus', 'LLM'],
+      '从零独立开发并上线的面试备考工具。复习按艾宾浩斯遗忘曲线自动排期;模拟面试由 LLM 对照参考答案打分并指出漏答要点;另有选择题专项训练与错题本。右下角可进入演示站。',
+    techStack: ['Full Stack', 'Java', 'Spring Boot', 'MySQL', 'Vue 3', 'LLM'],
     imageUrl: projectImages.interview,
     websiteUrl: 'https://demo.interview.devwiles.online/',
-  },
-  {
-    id: 'pmhub',
-    title: 'PmHub · 项目管理系统',
-    description:
-      '基于 Spring Cloud 的微服务项目管理系统，含项目任务管理、Flowable 工作流审批与 RBAC 权限体系。我完成了生产环境的完整落地：Nacos 注册配置中心 + Gateway 网关 + 四个业务服务的部署编排、GitHub Actions 全自动 CI/CD、以及在 4G 内存机器上的 JVM 与中间件调优，并修复了上游验证码失效等缺陷。',
-    techStack: ['Backend', 'Java', 'Spring Cloud', 'Nacos', 'Gateway', 'Flowable', 'MySQL', 'Redis', 'Vue'],
-    imageUrl: projectImages.pmhub,
-    link: 'https://github.com/DevWiles/Project-Manager-Hub',
-    websiteUrl: 'https://pmhub.devwiles.online/',
   },
   {
     id: 'portfolio',
