@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import type { CSSProperties } from 'react'
 import type { Skill, SkillCategory } from '../data/skills'
 import { skills } from '../data/skills'
 import { useIntersectionObserver } from '../hooks/useIntersectionObserver'
@@ -38,19 +38,24 @@ const skillIcons: Record<string, string> = {
   'pycharm': PycharmIcon,
 }
 
-// 原色偏深的图标，黑夜模式下提亮，避免和深色背景糊在一起
-const dimIconIds = new Set(['mysql', 'node'])
+// 个别图标需要单独调整：spring 是横向 logo，放大并只露出左侧叶子；原色偏深的在黑夜模式下提亮
+const iconTweaks: Record<string, string> = {
+  spring: 'origin-left scale-[3.6]',
+  mysql: 'dark:brightness-200',
+  node: 'dark:brightness-200',
+}
 
-const categories: { id: SkillCategory | 'all'; label: string }[] = [
-  { id: 'all', label: '全部' },
-  { id: 'frontend', label: '前端' },
-  { id: 'backend', label: '后端' },
-  { id: 'tools', label: '工具' },
+const groups: { id: SkillCategory; no: string; title: string; label: string }[] = [
+  { id: 'backend', no: '01', title: '后端', label: 'Backend' },
+  { id: 'frontend', no: '02', title: '前端', label: 'Frontend' },
+  { id: 'tools', no: '03', title: '工具', label: 'Tools' },
 ]
 
-const filterSkills = (category: SkillCategory | 'all'): Skill[] => {
-  if (category === 'all') return skills
-  return skills.filter((skill) => skill.category === category)
+// 熟练使用不标注，其余用小角标区分
+const levelTag: Record<Skill['level'], string | null> = {
+  advanced: null,
+  intermediate: '日常',
+  beginner: '学习中',
 }
 
 // 技能排序列表：按照 ID 顺序排列，排在前面的优先显示
@@ -62,126 +67,99 @@ const skillOrder: string[] = [
   'vite', 'ts', 'tailwind',
   'html', 'git', 'idea',
   'pycharm', 'vscode', 'docker',
-
 ]
 
-const sortSkillsByLevel = (skillsToSort: Skill[]): Skill[] => {
-  return [...skillsToSort].sort((a, b) => {
-    // 根据 skillOrder 中的索引排序，索引小的排在前面
+const sortSkills = (list: Skill[]): Skill[] => {
+  return [...list].sort((a, b) => {
     const aIndex = skillOrder.indexOf(a.id)
     const bIndex = skillOrder.indexOf(b.id)
-    
-    // 如果在 skillOrder 中找到了，按索引排序
-    if (aIndex !== -1 && bIndex !== -1) {
-      return aIndex - bIndex
-    }
-    
-    // 如果只有一个在 skillOrder 中，找到的排在前面
+    if (aIndex !== -1 && bIndex !== -1) return aIndex - bIndex
     if (aIndex !== -1) return -1
     if (bIndex !== -1) return 1
-    
-    // 如果都不在 skillOrder 中，按名称字母顺序排序
     return a.name.localeCompare(b.name)
   })
 }
 
+// 动画延迟，配合 index.css 里的 --d 变量实现错落进场
+const delay = (ms: number) => ({ '--d': `${ms}ms` }) as CSSProperties
+
 const Skills = () => {
-  const { ref, isIntersecting, isExiting } = useIntersectionObserver<HTMLElement>({ threshold: 0.15, downwardOnly: true })
-  const [activeCategory, setActiveCategory] = useState<SkillCategory | 'all'>('all')
-  const filtered = sortSkillsByLevel(filterSkills(activeCategory))
-  
-  // 计算需要多少个占位卡片来保持高度一致（基于 3 列 × 4 行 = 12 个位置）
-  const maxCards = 12
-  const placeholderCount = maxCards - filtered.length
+  // 只播放一次：进场后不再随滚动反复消失重播
+  const { ref, isIntersecting } = useIntersectionObserver<HTMLElement>({ threshold: 0.2, downwardOnly: true, triggerOnce: true })
 
   return (
-    <section
-      id="skills"
-      ref={ref}
-      className={`bg-background px-4 py-20 transition-all duration-700 ease-out ${
-        isExiting 
-          ? 'animate-slide-fade-out' 
-          : isIntersecting 
-            ? 'animate-slide-fade-in opacity-100 translate-y-0' 
-            : 'slide-fade-reset'
-      }`}
-    >
+    <section id="skills" ref={ref} data-revealed={isIntersecting} className="bg-background px-4 py-20">
       <div className="mx-auto max-w-5xl">
-        <div className="flex flex-col items-center text-center">
-          <h2 className="text-3xl font-bold md:text-5xl">
-            <span className="text-black dark:text-gray-100">技</span>
-            <span className="text-blue-500">能</span>
-          </h2>
-          <div className="mt-5 inline-flex flex-wrap justify-center gap-2 rounded-full bg-background p-1">
-            {categories.map((category) => (
-              <button
-                key={category.id}
-                type="button"
-                onClick={() => setActiveCategory(category.id)}
-                className={`rounded-full px-5 py-2 text-base font-bold transition-all duration-300 active:scale-95 ${
-                  activeCategory === category.id
-                    ? 'bg-gradient-to-r from-blue-500 to-blue-500 text-white shadow-lg shadow-blue-500/30'
-                    : 'text-black dark:text-gray-100 hover:bg-white/5 hover:text-black dark:hover:text-white'
-                }`}
-              >
-                {category.label}
-              </button>
-            ))}
-          </div>
-        </div>
+        <h2 className="reveal-mask text-2xl font-semibold md:text-3xl">
+          <span style={delay(0)}>
+            <span className="text-black dark:text-gray-100">My</span> <span className="text-blue-500">Skills</span>
+          </span>
+        </h2>
+        <p className="fade-up mt-3 text-sm text-gray-600 dark:text-gray-400 md:text-base" style={delay(120)}>
+          日常工作里依赖的技术栈，未标注的均为熟练使用。
+        </p>
 
-        <div className="mt-8 grid gap-4 sm:grid-cols-2 md:grid-cols-3">
-          {filtered.map((skill) => {
-            const IconComponent = skillIcons[skill.id]
+        <ul className="mt-8">
+          {groups.map((group, gi) => {
+            const items = sortSkills(skills.filter((skill) => skill.category === group.id))
+            const base = 300 + gi * 220
             return (
-              <div
-                key={skill.id}
-                className="group relative rounded-2xl border border-white/5 bg-white/5 p-4 shadow-sm shadow-black/40 transition dark:border-white/10 dark:bg-slate-900-transform duration-300 hover:scale-[1.02] hover:shadow-2xl hover:shadow-black/70"
-              >
-                <div className="flex items-start justify-between gap-3">
-                  <div className="flex-1">
-                    <p className="text-sm font-bold text-black dark:text-gray-100">{skill.name}</p>
-                    <p className="mt-1 text-xs text-gray-600 dark:text-gray-400">
-                      {skill.category === 'frontend' && '前端'}
-                      {skill.category === 'backend' && '后端'}
-                      {skill.category === 'tools' && '工具'}
-                    </p>
-                    <p className="mt-2 inline-flex rounded-full bg-white/10 px-2 py-0.5 text-xs text-black dark:text-gray-100">
-                      {skill.level === 'advanced' && '熟练使用'}
-                      {skill.level === 'intermediate' && '日常开发'}
-                      {skill.level === 'beginner' && '正在学习'}
+              <li key={group.id} className="group relative">
+                <span
+                  className="draw-line absolute inset-x-0 top-0 h-px bg-gray-200 dark:bg-white/10"
+                  style={delay(base)}
+                  aria-hidden="true"
+                />
+                <div className="flex flex-col gap-4 py-6 md:flex-row md:gap-8">
+                  <div className="fade-up flex shrink-0 items-baseline gap-5 md:w-48 md:gap-8 md:pt-2" style={delay(base + 60)}>
+                    <span className="w-8 shrink-0 text-lg font-semibold tabular-nums text-gray-300 transition-colors duration-300 group-hover:text-blue-500 dark:text-gray-600">
+                      {group.no}
+                    </span>
+                    <p className="flex items-baseline gap-3">
+                      <span className="text-base font-semibold text-black dark:text-gray-100">{group.title}</span>
+                      <span className="text-[11px] font-medium uppercase tracking-[0.2em] text-blue-500">{group.label}</span>
                     </p>
                   </div>
-                  <div className="shrink-0 opacity-80 transition-opacity group-hover:opacity-100">
-                    <img 
-                      src={IconComponent} 
-                      alt={skill.name} 
-                      className={`h-16 w-16 object-contain ${dimIconIds.has(skill.id) ? 'dark:brightness-200' : ''}`}
-                    />
+
+                  <div className="flex flex-wrap gap-2.5 pl-[3.25rem] md:pl-0">
+                    {items.map((skill, i) => {
+                      const tag = levelTag[skill.level]
+                      return (
+                        // 外层负责进场动画，内层负责悬浮上浮，避免两个 transform 互相覆盖
+                        <div key={skill.id} className="fade-up" style={delay(base + 120 + i * 45)}>
+                          <div
+                            className={`flex items-center gap-2 rounded-full border py-1.5 pl-1.5 pr-3.5 text-sm transition duration-300 ease-out hover:-translate-y-0.5 hover:border-blue-500/60 hover:shadow-md hover:shadow-blue-500/10 ${
+                              skill.level === 'beginner'
+                                ? 'border-dashed border-gray-300 bg-transparent dark:border-white/20'
+                                : 'border-gray-200 bg-white dark:border-white/10 dark:bg-slate-900'
+                            }`}
+                          >
+                            <span className="flex h-7 w-7 shrink-0 items-center justify-center overflow-hidden rounded-full bg-gray-50 p-1 dark:bg-white/5">
+                              <img
+                                src={skillIcons[skill.id]}
+                                alt=""
+                                className={`h-full w-full object-contain ${iconTweaks[skill.id] ?? ''}`}
+                              />
+                            </span>
+                            <span className="font-medium text-black dark:text-gray-100">{skill.name}</span>
+                            {tag && (
+                              <span className="rounded-full bg-gray-100 px-1.5 py-px text-[10px] text-gray-500 dark:bg-white/10 dark:text-gray-400">
+                                {tag}
+                              </span>
+                            )}
+                          </div>
+                        </div>
+                      )
+                    })}
                   </div>
                 </div>
-              </div>
+              </li>
             )
           })}
-          {/* 占位卡片，保持高度一致 */}
-          {Array.from({ length: placeholderCount }).map((_, index) => (
-            <div
-              key={`placeholder-${index}`}
-              className="invisible rounded-2xl border border-white/5 bg-white/5 p-4 shadow-sm shadow-black/40"
-              aria-hidden="true"
-            >
-              <p className="text-sm font-bold text-black dark:text-gray-100">&nbsp;</p>
-              <p className="mt-1 text-xs text-gray-600 dark:text-gray-400">&nbsp;</p>
-              <p className="mt-2 inline-flex rounded-full bg-white/10 px-2 py-0.5 text-xs text-black dark:text-gray-100">
-                &nbsp;
-              </p>
-            </div>
-          ))}
-        </div>
+        </ul>
       </div>
     </section>
   )
 }
 
 export default Skills
-
