@@ -1,4 +1,5 @@
-import type { CSSProperties, ReactNode } from 'react'
+import { useRef } from 'react'
+import type { CSSProperties, PointerEvent, ReactNode } from 'react'
 import profileImage from '../assets/images/about/profile.jpg'
 import { useIntersectionObserver } from '../hooks/useIntersectionObserver'
 
@@ -38,6 +39,48 @@ const identities = [
     desc: '理解市场运行逻辑与交易本质，在波动与不确定中锤炼对风险、节奏与执行的判断。',
   },
 ]
+
+// 头像：进场时画出一圈品牌蓝细环；鼠标悬浮时朝光标方向轻微 3D 倾斜，光晕反向偏移
+const Avatar = () => {
+  const tiltRef = useRef<HTMLDivElement>(null)
+
+  const setTilt = (rx: number, ry: number) => {
+    const el = tiltRef.current
+    if (!el) return
+    el.style.setProperty('--rx', `${rx}deg`)
+    el.style.setProperty('--ry', `${ry}deg`)
+    el.style.setProperty('--gx', `${-ry * 1.2}px`)
+    el.style.setProperty('--gy', `${rx * 1.2}px`)
+  }
+
+  const handleMove = (e: PointerEvent<HTMLDivElement>) => {
+    if (e.pointerType !== 'mouse') return
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
+    const rect = e.currentTarget.getBoundingClientRect()
+    const x = (e.clientX - rect.left) / rect.width - 0.5
+    const y = (e.clientY - rect.top) / rect.height - 0.5
+    setTilt(-y * 12, x * 12) // 最大约 ±6°
+  }
+
+  return (
+    <div
+      ref={tiltRef}
+      className="avatar-tilt relative aspect-square w-2/3 max-w-xs md:w-full"
+      onPointerMove={handleMove}
+      onPointerLeave={() => setTilt(0, 0)}
+    >
+      <div className="avatar-glow absolute inset-4 rounded-full bg-blue-500/30 blur-2xl dark:bg-blue-500/25" aria-hidden="true" />
+      <span className="absolute -inset-3 block" aria-hidden="true">
+        <svg className="h-full w-full -rotate-90 overflow-visible" viewBox="0 0 100 100">
+          <circle className="avatar-ring" cx="50" cy="50" r="49.5" pathLength={1} style={delay(500)} />
+        </svg>
+      </span>
+      <div className="relative h-full w-full overflow-hidden rounded-full border border-white/20 bg-black/40">
+        <img src={profileImage} alt="个人头像" className="h-full w-full object-cover" />
+      </div>
+    </div>
+  )
+}
 
 const About = () => {
   // 只播放一次：进场后不再随滚动反复消失重播
@@ -105,9 +148,7 @@ const About = () => {
         </div>
 
         <div className="fade-up flex w-full items-center justify-center md:w-1/3" style={delay(200)}>
-          <div className="aspect-square w-2/3 max-w-xs overflow-hidden rounded-full border border-white/20 bg-black/40 shadow-lg shadow-purple-500/30 md:w-full">
-            <img src={profileImage} alt="个人头像" className="h-full w-full object-cover" />
-          </div>
+          <Avatar />
         </div>
       </div>
     </section>

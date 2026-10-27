@@ -178,3 +178,38 @@ body {
     transition: none !important;
   }
 }
+
+/* ===== About 头像：进场画环 + 悬浮倾斜 ===== */
+.avatar-ring {
+  fill: none;
+  stroke: rgb(59 130 246 / 0.55);
+  stroke-width: 0.45; /* viewBox 单位，头像约 340px 宽时 ≈ 1.5px */
+  stroke-linecap: round;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  transition: stroke-dashoffset 1.4s cubic-bezier(0.65, 0, 0.35, 1) var(--d, 0ms);
+}
+
+[data-revealed='true'] .avatar-ring {
+  stroke-dashoffset: 0;
+}
+
+.avatar-tilt {
+  --rx: 0deg;
+  --ry: 0deg;
+  transform: perspective(900px) rotateX(var(--rx)) rotateY(var(--ry));
+  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform;
+}
+
+/* 光晕朝倾斜的反方向偏移，像光源固定在前方 */
+.avatar-glow {
+  transform: translate(var(--gx, 0px), var(--gy, 0px));
+  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .avatar-ring {
+    transition: none !important;
+  }
+}
