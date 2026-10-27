@@ -115,3 +115,66 @@ body {
   opacity: 0;
   transform: translateY(100px);
 }
+
+/* ===== About：宣言逐行升起 / 关键词马克笔高亮 / 列表依次进场 =====
+   由 section 上的 data-revealed 统一触发，各元素用 --d 变量错开时间 */
+.reveal-mask {
+  display: block;
+  overflow: hidden;
+  padding-bottom: 0.12em; /* 给字母下沿留空间，避免被遮罩裁掉 */
+}
+
+.reveal-mask > span {
+  display: block;
+  transform: translateY(110%);
+  transition: transform 0.9s cubic-bezier(0.22, 1, 0.36, 1) var(--d, 0ms);
+}
+
+.marker {
+  background-image: linear-gradient(rgb(59 130 246 / 0.18), rgb(59 130 246 / 0.18));
+  background-repeat: no-repeat;
+  background-position: 0 88%;
+  background-size: 0% 38%;
+  transition:
+    background-size 0.7s cubic-bezier(0.22, 1, 0.36, 1) var(--d, 0ms),
+    color 0.4s ease var(--d, 0ms);
+}
+
+.dark .marker {
+  background-image: linear-gradient(rgb(59 130 246 / 0.3), rgb(59 130 246 / 0.3));
+}
+
+.fade-up {
+  opacity: 0;
+  transform: translateY(14px);
+  transition:
+    opacity 0.7s ease-out var(--d, 0ms),
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1) var(--d, 0ms);
+}
+
+.draw-line {
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1) var(--d, 0ms);
+}
+
+[data-revealed='true'] .reveal-mask > span,
+[data-revealed='true'] .fade-up,
+[data-revealed='true'] .draw-line {
+  opacity: 1;
+  transform: none;
+}
+
+[data-revealed='true'] .marker {
+  background-size: 100% 38%;
+  color: rgb(59 130 246);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal-mask > span,
+  .marker,
+  .fade-up,
+  .draw-line {
+    transition: none !important;
+  }
+}
