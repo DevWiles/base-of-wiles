@@ -3,12 +3,13 @@ import type { Skill, SkillCategory } from '../data/skills'
 import { skills } from '../data/skills'
 import { useIntersectionObserver } from '../hooks/useIntersectionObserver'
 
-// 技能图标映射（*-simpleicons.svg 来自 Simple Icons，CC0 协议）
+// 技能图标映射（*-simpleicons.svg 来自 Simple Icons，CC0 协议；*-lobehub.svg 来自 LobeHub Icons，MIT 协议）
 import LlmIcon from '../assets/icons/skills/deepseek-simpleicons.svg'
 import PromptIcon from '../assets/icons/skills/prompt-custom.svg'
 import McpIcon from '../assets/icons/skills/modelcontextprotocol-simpleicons.svg'
 import ClaudeIcon from '../assets/icons/skills/claude-simpleicons.svg'
 import CursorIcon from '../assets/icons/skills/cursor-simpleicons.svg'
+import CodexIcon from '../assets/icons/skills/codex-lobehub.svg'
 import JavaIcon from '../assets/icons/skills/java-svgrepo-com.svg'
 import SpringIcon from '../assets/icons/skills/spring-svgrepo-com.svg'
 import MysqlIcon from '../assets/icons/skills/mysql-svgrepo-com.svg'
@@ -30,6 +31,7 @@ const skillIcons: Record<string, string> = {
   mcp: McpIcon,
   claudecode: ClaudeIcon,
   cursor: CursorIcon,
+  codex: CodexIcon,
   java: JavaIcon,
   spring: SpringIcon,
   mysql: MysqlIcon,
@@ -56,6 +58,7 @@ const iconTweaks: Record<string, string> = {
   mcp: 'scale-[0.78] dark:invert',
   claudecode: 'scale-[0.82]',
   cursor: 'scale-[0.78] dark:invert',
+  codex: 'scale-[1.15]', // 去掉白底后图形偏小，放大一点
   redis: 'scale-[0.82]',
   kafka: 'scale-[0.78] dark:invert',
   vue: 'scale-[0.82]',
@@ -82,7 +85,7 @@ const levelTag: Record<Skill['level'], string | null> = {
 // 你可以在这里调整技能的显示顺序
 const skillOrder: string[] = [
   'llm', 'prompt', 'mcp',
-  'claudecode', 'cursor',
+  'claudecode', 'codex', 'cursor',
   'java', 'spring', 'redis', 'mysql', 'kafka', 'python', 'node',
   'react', 'ts', 'vue', 'tailwind',
   'linux', 'docker', 'ghactions',
@@ -115,7 +118,7 @@ const Skills = () => {
           </span>
         </h2>
         <p className="fade-up mt-3 text-sm text-gray-600 dark:text-gray-400 md:text-base" style={delay(120)}>
-          日常工作里依赖的技术栈，未标注的均为熟练使用。
+          日常工作里依赖的技术栈。
         </p>
 
         <ul className="mt-8">

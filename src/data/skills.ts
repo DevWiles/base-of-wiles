@@ -17,6 +17,7 @@ export const skills: Skill[] = [
   // AI 编码
   { id: 'claudecode', name: 'Claude Code', level: 'advanced', category: 'aicoding' },
   { id: 'cursor', name: 'Cursor', level: 'advanced', category: 'aicoding' },
+  { id: 'codex', name: 'Codex', level: 'advanced', category: 'aicoding' },
 
   // 后端
   { id: 'java', name: 'Java', level: 'advanced', category: 'backend' },
