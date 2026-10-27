@@ -59,9 +59,26 @@ export const useIntersectionObserver = <T extends HTMLElement = HTMLDivElement>(
         const currentScrollY = window.scrollY
         const isScrollingDown = currentScrollY > lastScrollY.current
         const isIntersecting = entry.isIntersecting
+        // 元素顶边已在视口上方（整个滚过去了，或正跨在顶边上）：页面中部刷新
+        // （浏览器恢复滚动位置）或点导航直接跳过来时会这样
+        const isAboveViewport = entry.boundingClientRect.top < 0
 
         // 延迟判断，避免阈值附近的抖动
         pendingTimeoutRef.current = window.setTimeout(() => {
+          if (triggerOnce) {
+            // 只播一次的元素不看滚动方向：进入视野、或已经滚过去了，都直接显示。
+            // 否则在页面中部刷新后，上方的内容从没「向下滚进视野」过，会一直隐藏
+            if ((isIntersecting || isAboveViewport) && !hasTriggeredRef.current && updateState('entering')) {
+              hasTriggeredRef.current = true
+              requestAnimationFrame(() => {
+                setState('entered')
+                releaseLock()
+              })
+            }
+            lastScrollY.current = currentScrollY
+            return
+          }
+
           if (downwardOnly) {
             // 向下滚动模式
             if (isIntersecting && isScrollingDown) {
