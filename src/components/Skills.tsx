@@ -110,7 +110,7 @@ const Skills = () => {
   const { ref, isIntersecting } = useIntersectionObserver<HTMLElement>({ threshold: 0.2, downwardOnly: true, triggerOnce: true })
 
   return (
-    <section id="skills" ref={ref} data-revealed={isIntersecting} className="bg-background px-4 py-20">
+    <section id="skills" ref={ref} data-revealed={isIntersecting} className="px-4 py-20">
       <div className="mx-auto max-w-5xl">
         <h2 className="reveal-mask text-2xl font-semibold md:text-3xl">
           <span style={delay(0)}>

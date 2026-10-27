@@ -30,7 +30,7 @@ const Contact = () => {
     <section
       id="contact"
       ref={ref}
-      className={`bg-background px-4 py-20 relative transition-all duration-700 ease-out ${
+      className={`px-4 py-20 relative transition-all duration-700 ease-out ${
         isExiting 
           ? 'animate-slide-fade-out' 
           : isIntersecting 

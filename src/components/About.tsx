@@ -87,7 +87,7 @@ const About = () => {
   const { ref, isIntersecting } = useIntersectionObserver<HTMLElement>({ threshold: 0.2, downwardOnly: true, triggerOnce: true })
 
   return (
-    <section id="about" ref={ref} data-revealed={isIntersecting} className="bg-background px-4 py-20">
+    <section id="about" ref={ref} data-revealed={isIntersecting} className="px-4 py-20">
       <div className="mx-auto flex max-w-5xl flex-col-reverse items-center gap-12 md:flex-row md:items-center md:justify-between">
         <div className="flex w-full flex-col md:w-2/3">
           <h2 className="reveal-mask text-2xl font-semibold md:text-3xl">

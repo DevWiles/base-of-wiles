@@ -7,7 +7,7 @@ const Footer = () => {
   }
 
   return (
-    <footer className="border-t border-gray-300 dark:border-white/10 bg-background px-4 py-3">
+    <footer className="border-t border-gray-300 dark:border-white/10 px-4 py-3">
       <div className="mx-auto flex max-w-5xl flex-col items-center justify-between gap-3 text-xs text-black dark:text-gray-100 md:flex-row">
         <p>© {new Date().getFullYear()} Wiles Portfolio. All rights reserved.</p>
         <p className="text-[11px] text-black dark:text-gray-100">

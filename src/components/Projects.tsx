@@ -72,7 +72,7 @@ const Projects = () => {
   })
 
   return (
-    <section id="projects" className="bg-background px-4 py-20">
+    <section id="projects" className="px-4 py-20">
       <div className="mx-auto max-w-5xl">
         <div ref={ref} data-revealed={isIntersecting}>
           <h2 className="reveal-mask text-2xl font-semibold md:text-3xl">
