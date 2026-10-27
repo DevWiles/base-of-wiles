@@ -170,9 +170,18 @@ const ProjectRow = ({ project, index, flipped }: { project: Project; index: numb
             </a>
           )}
         </div>
-        {project.note && (
+        {project.upstream && (
           <p className="fade-up mt-4 text-[11px] leading-relaxed text-gray-400 dark:text-gray-500" style={delay(940)}>
-            {project.note}
+            基于{' '}
+            <a
+              href={project.upstream.url}
+              target="_blank"
+              rel="noreferrer"
+              className="font-medium text-gray-500 underline decoration-gray-300 underline-offset-2 transition-colors hover:text-blue-500 hover:decoration-blue-500 dark:text-gray-400 dark:decoration-gray-600"
+            >
+              {project.upstream.name}
+            </a>{' '}
+            二次开发，仅供学习交流，无商业用途；如有侵权请联系下架。
           </p>
         )}
       </div>

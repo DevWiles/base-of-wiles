@@ -18,7 +18,8 @@ export type Project = {
   link?: string
   // GitHub 链接旁的文字，不填则只显示图标
   linkLabel?: string
-  note?: string // 卡片底部的小字说明，如二次开发声明
+  // 二次开发的项目：底部小字注明原项目（带链接）与免责声明
+  upstream?: { name: string; url: string }
 }
 
 export const projects: Project[] = [
@@ -60,7 +61,7 @@ export const projects: Project[] = [
     id: 'recode',
     title: 'ReCode 算法刷题复习',
     label: 'Full Stack · SRS',
-    summary: '基于开源项目 ReCode 二次开发，把单机的刷题间隔复习工具改造成多用户在线版。',
+    summary: '基于开源项目 ReCode 二次开发并开源，把单机的刷题间隔复习工具改造成多用户在线版。',
     highlights: [
       '新增登录鉴权、登录审计与多用户数据隔离，管理员可为朋友开号',
       '多解法挑战模式：随机抽题，逐个回忆每种解法并自评',
@@ -72,9 +73,9 @@ export const projects: Project[] = [
     displayUrl: 'demo.recode.devwiles.online',
     websiteUrl: 'https://demo.recode.devwiles.online/',
     websiteLabel: '一键体验演示站',
-    link: 'https://github.com/CoisiniIce/ReCode',
-    linkLabel: '原项目',
-    note: '原项目作者 CoisiniIce，仅作个人学习展示，无商业用途；如有侵权请联系下架。',
+    link: 'https://github.com/DevWiles/ReCode-Online',
+    linkLabel: '开源仓库',
+    upstream: { name: 'CoisiniIce/ReCode', url: 'https://github.com/CoisiniIce/ReCode' },
   },
   {
     id: 'taoligo',
