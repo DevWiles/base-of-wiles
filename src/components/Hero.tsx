@@ -23,7 +23,7 @@ const Hero = () => {
     >
       <div className="mx-auto max-w-3xl text-center">
         <p 
-          className={`text-sm uppercase tracking-[0.3em] text-black transition-all duration-1000 ease-out transform ${
+          className={`text-sm uppercase tracking-[0.3em] text-black dark:text-gray-100 transition-all duration-1000 ease-out transform ${
             contentVisible ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-8'
           }`}
         >
@@ -31,7 +31,7 @@ const Hero = () => {
         </p>
         <h1 className="mt-4 text-4xl font-bold sm:text-5xl md:text-6xl">
           <span
-            className={`text-blue-500 transition-all duration-1000 ease-out ${
+            className={`text-blue-500 transition-opacity duration-1000 ease-out ${
               titleAnimated ? 'opacity-100' : 'opacity-0'
             }`}
             style={{ transitionDelay: titleAnimated ? '600ms' : '100ms' }}
@@ -39,7 +39,7 @@ const Hero = () => {
             你好，
           </span>
           <span
-            className={`text-blue-500 transition-all duration-700 ease-out ${
+            className={`text-blue-500 transition-opacity duration-700 ease-out ${
               titleAnimated ? 'opacity-100' : 'opacity-0'
             }`}
             style={{ transitionDelay: titleAnimated ? '900ms' : '100ms' }}
@@ -47,7 +47,7 @@ const Hero = () => {
             我
           </span>
           <span
-            className={`text-blue-500 transition-all duration-700 ease-out ${
+            className={`text-blue-500 transition-opacity duration-700 ease-out ${
               titleAnimated ? 'opacity-100' : 'opacity-0'
             }`}
             style={{ transitionDelay: titleAnimated ? '1000ms' : '100ms' }}
@@ -55,7 +55,7 @@ const Hero = () => {
             是
           </span>
           <span
-            className={`text-black transition-all duration-1500 ease-out ${
+            className={`text-black dark:text-gray-100 transition-opacity duration-1500 ease-out ${
               titleAnimated ? 'opacity-100' : 'opacity-0'
             }`}
             style={{ transitionDelay: titleAnimated ? '1300ms' : '100ms' }}
@@ -64,7 +64,7 @@ const Hero = () => {
           </span>
         </h1>
         <p 
-          className={`mt-6 text-lg font-medium text-black sm:text-xl transition-all duration-1000 ease-out transform ${
+          className={`mt-6 text-lg font-medium text-black dark:text-gray-100 sm:text-xl transition-all duration-1000 ease-out transform ${
             contentVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
           }`}
         >
@@ -83,14 +83,14 @@ const Hero = () => {
           </a>
           <a
             href="#contact"
-            className="rounded-full border border-white/20 bg-black px-6 py-2 text-sm font-medium text-gray-200 transition hover:bg-gray-800"
+            className="rounded-full border border-white/20 bg-black px-6 py-2 text-sm font-medium text-gray-200 transition hover:bg-gray-800 dark:bg-slate-800 dark:hover:bg-slate-700"
           >
             联系我
           </a>
         </div>
       </div>
       <div className="absolute bottom-8 left-0 right-0 mx-auto flex w-fit flex-col items-center gap-1 animate-bounce">
-        <span className="text-sm text-black">Scroll</span>
+        <span className="text-sm text-black dark:text-gray-100">Scroll</span>
         <svg
             className="h-6 w-6 text-blue-500"
             fill="none"

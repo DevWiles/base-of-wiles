@@ -39,19 +39,19 @@ const Contact = () => {
       }`}
     >
       <div className="mx-auto max-w-5xl">
-        <h2 className="text-2xl font-semibold text-black md:text-3xl">联系方式</h2>
-        <p className="mt-3 text-sm text-black md:text-base">
+        <h2 className="text-2xl font-semibold text-black dark:text-gray-100 md:text-3xl">联系方式</h2>
+        <p className="mt-3 text-sm text-black dark:text-gray-100 md:text-base">
           如果你对我的项目或经历感兴趣，欢迎通过以下方式联系我。
         </p>
 
         <div className="mt-8 grid gap-6 md:grid-cols-3">
           <a
             onClick={handleEmailClick}
-            className="group relative flex items-center justify-between gap-4 rounded-2xl border border-gray-200 bg-white p-4 text-sm text-gray-700 shadow-md shadow-black/10 transition-all duration-300 hover:scale-[1.02] hover:border-black/20 hover:bg-gray-50 hover:shadow-xl hover:shadow-black/20 cursor-pointer"
+            className="group relative flex items-center justify-between gap-4 rounded-2xl border border-gray-200 bg-white p-4 dark:border-white/10 dark:bg-slate-900 text-sm text-gray-700 dark:text-gray-300 shadow-md shadow-black/10 transition-all duration-300 hover:scale-[1.02] hover:border-black/20 hover:bg-gray-50 dark:hover:border-white/20 dark:hover:bg-slate-800 hover:shadow-xl hover:shadow-black/20 cursor-pointer"
           >
             <div>
-              <p className="font-medium text-gray-900">Gmail</p>
-              <p className="mt-2 break-all text-xs text-gray-600">
+              <p className="font-medium text-gray-900 dark:text-gray-100">Gmail</p>
+              <p className="mt-2 break-all text-xs text-gray-600 dark:text-gray-400">
                 nathan.demon66@gmail.com
               </p>
             </div>
@@ -65,34 +65,34 @@ const Contact = () => {
             href="https://github.com/DevWiles"
             target="_blank"
             rel="noreferrer"
-            className="group relative flex items-center justify-between gap-4 rounded-2xl border border-gray-200 bg-white p-4 text-sm text-gray-700 shadow-md shadow-black/10 transition-all duration-300 hover:scale-[1.02] hover:border-black/20 hover:bg-gray-50 hover:shadow-xl hover:shadow-black/20"
+            className="group relative flex items-center justify-between gap-4 rounded-2xl border border-gray-200 bg-white p-4 dark:border-white/10 dark:bg-slate-900 text-sm text-gray-700 dark:text-gray-300 shadow-md shadow-black/10 transition-all duration-300 hover:scale-[1.02] hover:border-black/20 hover:bg-gray-50 dark:hover:border-white/20 dark:hover:bg-slate-800 hover:shadow-xl hover:shadow-black/20"
           >
             <div>
-              <p className="font-medium text-gray-900">GitHub</p>
-              <p className="mt-2 text-xs text-gray-600">@DevWiles</p>
+              <p className="font-medium text-gray-900 dark:text-gray-100">GitHub</p>
+              <p className="mt-2 text-xs text-gray-600 dark:text-gray-400">@DevWiles</p>
             </div>
             <img
               src={githubIcon}
               alt="GitHub"
-              className="h-8 w-8 flex-shrink-0 transition-transform duration-300 group-hover:scale-110"
+              className="h-8 w-8 flex-shrink-0 dark:invert transition-transform duration-300 group-hover:scale-110"
             />
           </a>
           <a
             href="https://b23.tv/bi25Af4"
             target="_blank"
             rel="noopener noreferrer"
-            className="group relative flex items-center justify-between gap-4 rounded-2xl border border-gray-200 bg-white p-4 text-sm text-gray-700 shadow-md shadow-black/10 transition-all duration-300 hover:scale-[1.02] hover:border-black/20 hover:bg-gray-50 hover:shadow-xl hover:shadow-black/20"
+            className="group relative flex items-center justify-between gap-4 rounded-2xl border border-gray-200 bg-white p-4 dark:border-white/10 dark:bg-slate-900 text-sm text-gray-700 dark:text-gray-300 shadow-md shadow-black/10 transition-all duration-300 hover:scale-[1.02] hover:border-black/20 hover:bg-gray-50 dark:hover:border-white/20 dark:hover:bg-slate-800 hover:shadow-xl hover:shadow-black/20"
           >
             <div>
-              <p className="font-medium text-gray-900">Bilibili</p>
-              <p className="mt-2 text-xs text-gray-600">
+              <p className="font-medium text-gray-900 dark:text-gray-100">Bilibili</p>
+              <p className="mt-2 text-xs text-gray-600 dark:text-gray-400">
                 @Air_Chairman
               </p>
             </div>
             <img
               src={bilibiliIcon}
               alt="Bilibili"
-              className="h-8 w-8 flex-shrink-0 transition-transform duration-300 group-hover:scale-110"
+              className="h-8 w-8 flex-shrink-0 dark:invert transition-transform duration-300 group-hover:scale-110"
             />
           </a>
         </div>
@@ -101,7 +101,7 @@ const Contact = () => {
       {/* Toast 提示 */}
       {showToast && (
         <div className={`fixed bottom-8 left-1/2 transform -translate-x-1/2 z-50 transition-all duration-300 ${isFadingOut ? 'animate-quick-fade-out opacity-0' : 'opacity-100'}`}>
-          <div className="bg-gray-900 text-white px-6 py-3 rounded-lg shadow-lg flex items-center gap-2">
+          <div className="bg-gray-900 text-white px-6 dark:bg-slate-700 py-3 rounded-lg shadow-lg flex items-center gap-2">
             <svg className="w-5 h-5 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
             </svg>

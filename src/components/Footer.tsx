@@ -7,15 +7,15 @@ const Footer = () => {
   }
 
   return (
-    <footer className="border-t border-gray-300 bg-background px-4 py-3">
-      <div className="mx-auto flex max-w-5xl flex-col items-center justify-between gap-3 text-xs text-black md:flex-row">
+    <footer className="border-t border-gray-300 dark:border-white/10 bg-background px-4 py-3">
+      <div className="mx-auto flex max-w-5xl flex-col items-center justify-between gap-3 text-xs text-black dark:text-gray-100 md:flex-row">
         <p>© {new Date().getFullYear()} Wiles Portfolio. All rights reserved.</p>
-        <p className="text-[11px] text-black">
+        <p className="text-[11px] text-black dark:text-gray-100">
             Guangdong University of Technology, Guangzhou, Guangdong, China
         </p>
         <button
           onClick={scrollToTop}
-          className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-blue-50 text-blue-500 transition hover:bg-blue-100 hover:text-blue-600"
+          className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-blue-50 text-blue-500 transition hover:bg-blue-100 dark:bg-blue-500/10 dark:hover:bg-blue-500/20 hover:text-blue-600"
           aria-label="返回顶部"
         >
           <svg

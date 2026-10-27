@@ -38,6 +38,9 @@ const skillIcons: Record<string, string> = {
   'pycharm': PycharmIcon,
 }
 
+// 原色偏深的图标，黑夜模式下提亮，避免和深色背景糊在一起
+const dimIconIds = new Set(['mysql', 'node'])
+
 const categories: { id: SkillCategory | 'all'; label: string }[] = [
   { id: 'all', label: '全部' },
   { id: 'frontend', label: '前端' },
@@ -106,7 +109,7 @@ const Skills = () => {
       <div className="mx-auto max-w-5xl">
         <div className="flex flex-col items-center text-center">
           <h2 className="text-3xl font-bold md:text-5xl">
-            <span className="text-black">技</span>
+            <span className="text-black dark:text-gray-100">技</span>
             <span className="text-blue-500">能</span>
           </h2>
           <div className="mt-5 inline-flex flex-wrap justify-center gap-2 rounded-full bg-background p-1">
@@ -118,7 +121,7 @@ const Skills = () => {
                 className={`rounded-full px-5 py-2 text-base font-bold transition-all duration-300 active:scale-95 ${
                   activeCategory === category.id
                     ? 'bg-gradient-to-r from-blue-500 to-blue-500 text-white shadow-lg shadow-blue-500/30'
-                    : 'text-black hover:bg-white/5 hover:text-black'
+                    : 'text-black dark:text-gray-100 hover:bg-white/5 hover:text-black dark:hover:text-white'
                 }`}
               >
                 {category.label}
@@ -133,17 +136,17 @@ const Skills = () => {
             return (
               <div
                 key={skill.id}
-                className="group relative rounded-2xl border border-white/5 bg-white/5 p-4 shadow-sm shadow-black/40 transition-transform duration-300 hover:scale-[1.02] hover:shadow-2xl hover:shadow-black/70"
+                className="group relative rounded-2xl border border-white/5 bg-white/5 p-4 shadow-sm shadow-black/40 transition dark:border-white/10 dark:bg-slate-900-transform duration-300 hover:scale-[1.02] hover:shadow-2xl hover:shadow-black/70"
               >
                 <div className="flex items-start justify-between gap-3">
                   <div className="flex-1">
-                    <p className="text-sm font-bold text-black">{skill.name}</p>
-                    <p className="mt-1 text-xs text-gray-600">
+                    <p className="text-sm font-bold text-black dark:text-gray-100">{skill.name}</p>
+                    <p className="mt-1 text-xs text-gray-600 dark:text-gray-400">
                       {skill.category === 'frontend' && '前端'}
                       {skill.category === 'backend' && '后端'}
                       {skill.category === 'tools' && '工具'}
                     </p>
-                    <p className="mt-2 inline-flex rounded-full bg-white/10 px-2 py-0.5 text-xs text-black">
+                    <p className="mt-2 inline-flex rounded-full bg-white/10 px-2 py-0.5 text-xs text-black dark:text-gray-100">
                       {skill.level === 'advanced' && '熟练使用'}
                       {skill.level === 'intermediate' && '日常开发'}
                       {skill.level === 'beginner' && '正在学习'}
@@ -153,7 +156,7 @@ const Skills = () => {
                     <img 
                       src={IconComponent} 
                       alt={skill.name} 
-                      className="h-16 w-16 object-contain"
+                      className={`h-16 w-16 object-contain ${dimIconIds.has(skill.id) ? 'dark:brightness-200' : ''}`}
                     />
                   </div>
                 </div>
@@ -167,9 +170,9 @@ const Skills = () => {
               className="invisible rounded-2xl border border-white/5 bg-white/5 p-4 shadow-sm shadow-black/40"
               aria-hidden="true"
             >
-              <p className="text-sm font-bold text-black">&nbsp;</p>
-              <p className="mt-1 text-xs text-gray-600">&nbsp;</p>
-              <p className="mt-2 inline-flex rounded-full bg-white/10 px-2 py-0.5 text-xs text-black">
+              <p className="text-sm font-bold text-black dark:text-gray-100">&nbsp;</p>
+              <p className="mt-1 text-xs text-gray-600 dark:text-gray-400">&nbsp;</p>
+              <p className="mt-2 inline-flex rounded-full bg-white/10 px-2 py-0.5 text-xs text-black dark:text-gray-100">
                 &nbsp;
               </p>
             </div>

@@ -20,14 +20,14 @@ const Projects = () => {
         <header className="flex flex-col items-center text-center">
           <div>
             <h2 className="text-2xl font-semibold md:text-5xl">
-              <span className="text-black">
+              <span className="text-black dark:text-gray-100">
                 项
               </span>
               <span className="text-blue-500">
                 目
               </span>
             </h2>
-            <p className="mt-3 max-w-2xl text-sm text-black md:text-base">
+            <p className="mt-3 max-w-2xl text-sm text-black dark:text-gray-100 md:text-base">
             这些项目体现了我日常依靠编程提高生产力和生活质量的经历，说不定也能帮到你。
             </p>
           </div>
@@ -37,7 +37,7 @@ const Projects = () => {
           {projects.map((project) => (
             <article
               key={project.id}
-              className="group relative flex aspect-[30/52] w-[275px] flex-col overflow-hidden rounded-2xl border border-white/10 bg-white/5 shadow-md shadow-black/40 transition-transform duration-300 hover:scale-[1.02] hover:shadow-2xl hover:shadow-black/70"
+              className="group relative flex aspect-[30/52] w-[275px] flex-col overflow-hidden rounded-2xl border border-white/10 bg-white/5 shadow-md dark:bg-slate-900 shadow-black/40 transition-transform duration-300 hover:scale-[1.02] hover:shadow-2xl hover:shadow-black/70"
             >
               <div className="relative flex-[0_0_33%] w-full overflow-hidden">
                 <img
@@ -53,13 +53,13 @@ const Projects = () => {
                   否则描述一长就会把下面的链接区顶出卡片、被裁掉(看不到访问网站的图标)。 */}
               <div className="relative flex min-h-0 flex-1 flex-col">
                 <div className="flex min-h-0 flex-1 flex-col gap-2 overflow-hidden p-4">
-                  <h3 className="shrink-0 text-lg font-semibold text-black">{project.title}</h3>
-                  <p className="line-clamp-6 text-sm text-gray-600">{project.description}</p>
+                  <h3 className="shrink-0 text-lg font-semibold text-black dark:text-gray-100">{project.title}</h3>
+                  <p className="line-clamp-6 text-sm text-gray-600 dark:text-gray-400">{project.description}</p>
                   <div className="mt-auto flex flex-wrap gap-2 pt-2">
                     {project.techStack.map((tech) => (
                       <span
                         key={tech}
-                        className="rounded-full border border-gray-300 bg-white/10 px-2 py-0.5 text-xs text-black"
+                        className="rounded-full border border-gray-300 bg-white/10 dark:border-white/20 px-2 py-0.5 text-xs text-black dark:text-gray-100"
                       >
                         {tech}
                       </span>
@@ -78,7 +78,7 @@ const Projects = () => {
                         aria-label="访问项目网站"
                       >
                         <svg
-                          className="h-4 w-4 text-black"
+                          className="h-4 w-4 text-black dark:text-gray-100"
                           fill="none"
                           stroke="currentColor"
                           viewBox="0 0 24 24"
@@ -104,7 +104,7 @@ const Projects = () => {
                         <img
                           src={githubIcon}
                           alt="GitHub"
-                          className="h-6 w-6 flex-shrink-0"
+                          className="h-6 w-6 flex-shrink-0 dark:invert"
                         />
                       </a>
                     )}

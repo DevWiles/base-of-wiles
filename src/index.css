@@ -2,6 +2,21 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --color-background: 248 250 252; /* #f8fafc */
+  color-scheme: light;
+}
+
+:root.dark {
+  --color-background: 2 6 23; /* #020617 slate-950 */
+  color-scheme: dark;
+}
+
+body {
+  background-color: rgb(var(--color-background));
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
 @keyframes fade-in {
   from {
     opacity: 0;
