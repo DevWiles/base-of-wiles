@@ -12,6 +12,18 @@
   color-scheme: dark;
 }
 
+/* 页内锚点（「查看项目」「联系我」等）平滑滚动过去，并给固定的导航栏留出高度 */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 4rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
 body {
   background-color: rgb(var(--color-background));
   transition: background-color 0.3s ease, color 0.3s ease;
