@@ -1,4 +1,4 @@
-export type SkillCategory = 'frontend' | 'backend' | 'tools'
+export type SkillCategory = 'ai' | 'aicoding' | 'backend' | 'frontend' | 'devops'
 
 export type Skill = {
   id: string
@@ -7,26 +7,34 @@ export type Skill = {
   category: SkillCategory
 }
 
+// advanced = 熟练使用（不标注）；intermediate = 日常；beginner = 学习中
 export const skills: Skill[] = [
-  // Frontend (6)
+  // AI 应用
+  { id: 'llm', name: 'LLM API', level: 'advanced', category: 'ai' },
+  { id: 'prompt', name: 'Prompt 工程', level: 'advanced', category: 'ai' },
+  { id: 'mcp', name: 'Agent / MCP', level: 'intermediate', category: 'ai' },
+
+  // AI 编码
+  { id: 'claudecode', name: 'Claude Code', level: 'advanced', category: 'aicoding' },
+  { id: 'cursor', name: 'Cursor', level: 'advanced', category: 'aicoding' },
+
+  // 后端
+  { id: 'java', name: 'Java', level: 'advanced', category: 'backend' },
+  { id: 'spring', name: 'Spring Boot / Cloud', level: 'advanced', category: 'backend' },
+  { id: 'mysql', name: 'MySQL', level: 'intermediate', category: 'backend' },
+  { id: 'redis', name: 'Redis', level: 'advanced', category: 'backend' },
+  { id: 'kafka', name: 'Kafka', level: 'intermediate', category: 'backend' },
+  { id: 'python', name: 'Python', level: 'intermediate', category: 'backend' },
+  { id: 'node', name: 'Node.js', level: 'intermediate', category: 'backend' },
+
+  // 前端
   { id: 'react', name: 'React', level: 'advanced', category: 'frontend' },
   { id: 'ts', name: 'TypeScript', level: 'advanced', category: 'frontend' },
+  { id: 'vue', name: 'Vue 3', level: 'intermediate', category: 'frontend' },
   { id: 'tailwind', name: 'Tailwind CSS', level: 'advanced', category: 'frontend' },
-  { id: 'html', name: 'HTML5/CSS3', level: 'advanced', category: 'frontend' },
-  
-  // Backend (6)
-  { id: 'node', name: 'Node.js', level: 'intermediate', category: 'backend' },
-  { id: 'java', name: 'Java', level: 'advanced', category: 'backend' },
-  { id: 'spring', name: 'Spring Boot', level: 'advanced', category: 'backend' },
-  { id: 'python', name: 'Python', level: 'intermediate', category: 'backend' },
-  { id: 'mysql', name: 'MySQL', level: 'intermediate', category: 'backend' },
-  
-  // Tools (4)
-  { id: 'git', name: 'Git', level: 'advanced', category: 'tools' },
-  { id: 'vite', name: 'Vite', level: 'advanced', category: 'tools' },
-  { id: 'docker', name: 'Docker', level: 'beginner', category: 'tools' },
-  { id: 'idea', name: 'IntelliJ IDEA', level: 'advanced', category: 'tools' },
-  { id: 'vscode', name: 'VS Code', level: 'advanced', category: 'tools' },
-  { id: 'pycharm', name: 'PyCharm', level: 'advanced', category: 'tools' },
-]
 
+  // 部署
+  { id: 'docker', name: 'Docker', level: 'beginner', category: 'devops' },
+  { id: 'linux', name: 'Linux', level: 'advanced', category: 'devops' },
+  { id: 'ghactions', name: 'GitHub Actions', level: 'intermediate', category: 'devops' },
+]
