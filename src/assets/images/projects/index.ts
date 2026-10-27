@@ -1,13 +1,11 @@
-import portfolio from './portfolio.png'
-import taoligo from './taoligo.png'
-import lingchatLogo from './lingchat-logo.png'
-import lingchatWeb from './lingchat-web.png'
-import interview from './interview.png'
+import interview from './interview.webp'
+import myagent from './myagent.webp'
+import recode from './recode.webp'
+import taoligo from './taoligo.webp'
 
 export const projectImages = {
-  portfolio,
-  taoligo,
-  lingchatLogo,
-  lingchatWeb,
   interview,
+  myagent,
+  recode,
+  taoligo,
 } as const

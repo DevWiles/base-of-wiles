@@ -213,3 +213,24 @@ body {
     transition: none !important;
   }
 }
+
+/* ===== 项目：浏览器窗口截图像拉开幕布一样展开 =====
+   上下左右多留 60px 给阴影，否则展开后阴影会被裁掉 */
+.browser-frame {
+  clip-path: inset(-60px 100% -60px -60px);
+  transition: clip-path 1.1s cubic-bezier(0.65, 0, 0.35, 1) var(--d, 0ms);
+}
+
+.browser-frame.wipe-from-right {
+  clip-path: inset(-60px -60px -60px 100%);
+}
+
+[data-revealed='true'] .browser-frame {
+  clip-path: inset(-60px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .browser-frame {
+    transition: none !important;
+  }
+}
