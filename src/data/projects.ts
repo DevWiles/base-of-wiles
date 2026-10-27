@@ -16,6 +16,7 @@ export type Project = {
   websiteUrl?: string
   websiteLabel?: string
   link?: string
+  // GitHub 链接旁的文字，不填则只显示图标
   linkLabel?: string
   note?: string // 卡片底部的小字说明，如二次开发声明
 }
@@ -37,7 +38,6 @@ export const projects: Project[] = [
     frame: 'terminal',
     displayUrl: '~/shopcart — myagent',
     link: 'https://github.com/DevWiles/myagent',
-    linkLabel: 'GitHub',
   },
   {
     id: 'interview',
@@ -73,7 +73,7 @@ export const projects: Project[] = [
     websiteUrl: 'https://demo.recode.devwiles.online/',
     websiteLabel: '一键体验演示站',
     link: 'https://github.com/CoisiniIce/ReCode',
-    linkLabel: '原项目 GitHub',
+    linkLabel: '原项目',
     note: '原项目作者 CoisiniIce，仅作个人学习展示，无商业用途；如有侵权请联系下架。',
   },
   {
