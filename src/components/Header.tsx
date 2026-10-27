@@ -30,7 +30,7 @@ const Header = ({ onNavClick }: HeaderProps) => {
                 key={item.id}
                 type="button"
                 onClick={() => onNavClick(item.id)}
-                className="transition-colors hover:text-sky-400"
+                className="transition-colors hover:text-blue-500"
               >
                 {item.label}
               </button>
@@ -39,7 +39,7 @@ const Header = ({ onNavClick }: HeaderProps) => {
           <button
             type="button"
             onClick={toggleTheme}
-            className="inline-flex h-9 w-9 items-center justify-center rounded-full text-gray-700 transition hover:bg-black/5 hover:text-sky-400 dark:text-gray-300 dark:hover:bg-white/10"
+            className="inline-flex h-9 w-9 items-center justify-center rounded-full text-gray-700 transition hover:bg-black/5 hover:text-blue-500 dark:text-gray-300 dark:hover:bg-white/10"
             aria-label={isDark ? '切换到白天模式' : '切换到黑夜模式'}
             title={isDark ? '切换到白天模式' : '切换到黑夜模式'}
           >
