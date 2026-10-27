@@ -30,7 +30,8 @@ const Header = ({ onNavClick }: HeaderProps) => {
                 key={item.id}
                 type="button"
                 onClick={() => onNavClick(item.id)}
-                className="transition-colors hover:text-blue-500"
+                // 悬浮时下划线从左往右画出，移开时向右收回
+                className="relative py-1 transition-colors duration-200 hover:text-blue-500 after:absolute after:inset-x-0 after:-bottom-0.5 after:h-0.5 after:origin-right after:scale-x-0 after:rounded-full after:bg-blue-500 after:transition-transform after:duration-300 after:ease-out hover:after:origin-left hover:after:scale-x-100 focus-visible:after:origin-left focus-visible:after:scale-x-100 motion-reduce:after:transition-none"
               >
                 {item.label}
               </button>
